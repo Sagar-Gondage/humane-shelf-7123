@@ -1,7 +1,11 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const cors = require("cors");
 const mongoose = require("mongoose");
 const ProductRouter = require("./router/product.route");
+
+const UserRouter = require("./router/user.route");
+
 dotenv.config();
 const app = express();
 const mongodb_url =
@@ -9,13 +13,18 @@ const mongodb_url =
 const PORT = process.env.PORT;
 const cors = require("cors");
 app.use(cors());
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //Product Route
 app.use("/products", ProductRouter);
 
+//User Route
+app.use("/user",UserRouter);
+
 mongoose.connect(mongodb_url).then(() => {
+
   app.listen(PORT, () => {
     console.log("server is started on port " + PORT);
   });
