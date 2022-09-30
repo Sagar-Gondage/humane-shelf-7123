@@ -2,11 +2,11 @@ import { Box, Image, Text } from "@chakra-ui/react";
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-const ProductsCard = ({ something }) => {
+const ProductsCard = ({ something, prodVal = 7 }) => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 7,
+      items: prodVal,
       slidesToSlide: 3, // optional, default to 1.
     },
     tablet: {
