@@ -1,14 +1,22 @@
-import { Box, Flex, Grid, Select, Spacer, Text } from "@chakra-ui/react";
-import prodstyles from "./css/allProducts.module.css";
+import {
+  Box,
+  Flex,
+  Grid,
+  Select,
+  Spacer,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
+import prodstyles from "../css/allProducts.module.css";
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProductsAPI } from "../actions/product.actions";
+import { getAllProductsAPI } from "../../actions/product.actions";
 import {
   AllBrands,
   allDiscounts,
-} from "../constants/function.constants.js/function.constants";
-import AllProduct from "../Components/allProductCart";
+} from "../../constants/function.constants.js/function.constants";
+import AllProduct from "../../Components/allProductCart";
 
 const AllProductPage = () => {
   const { productList } = useSelector((state) => state);
@@ -115,6 +123,7 @@ const AllProductPage = () => {
             alignItems="center"
           >
             <Text>All Products</Text>
+
             <Flex gap="1rem" alignItems="center" justifyContent="center">
               <Text margin="auto" width="100%">
                 Sort By
@@ -128,7 +137,17 @@ const AllProductPage = () => {
               </Select>
             </Flex>
           </Flex>
-
+          {loading && (
+            <Spinner
+              thickness="4px"
+              speed="0.65s"
+              emptyColor="gray.200"
+              color="blue.500"
+              size="xl"
+              marginLeft="100%"
+              marginTop="50%"
+            />
+          )}
           <Grid
             width={"100%"}
             // border={"1px solid orange"}
@@ -149,31 +168,33 @@ const AllProductPage = () => {
               boxShadow: "rgba(0, 0, 0, 0.07) 0px 0px 7px 0px",
             }}
           >
-            <div className={prodstyles.pagination}>
-              <div onClick={decrpage} className={prodstyles.othernum}>
-                Previous
+            {success && (
+              <div className={prodstyles.pagination}>
+                <div onClick={decrpage} className={prodstyles.othernum}>
+                  Previous
+                </div>
+                {pageno.map((el) => {
+                  return (
+                    // <div>
+                    //   {el == page ? (
+                    //     <div className={prodstyles.numcolor}>{el}</div>
+                    //   ) : (
+                    //     <div
+                    //       onClick={() => setpage(el)}
+                    //       className={prodstyles.othernum}
+                    //     >
+                    //       {el}
+                    //     </div>
+                    //   )}
+                    // </div>
+                    <div>Page No Here</div>
+                  );
+                })}
+                <div onClick={incrpage} className={prodstyles.othernum}>
+                  Next
+                </div>
               </div>
-              {pageno.map((el) => {
-                return (
-                  // <div>
-                  //   {el == page ? (
-                  //     <div className={prodstyles.numcolor}>{el}</div>
-                  //   ) : (
-                  //     <div
-                  //       onClick={() => setpage(el)}
-                  //       className={prodstyles.othernum}
-                  //     >
-                  //       {el}
-                  //     </div>
-                  //   )}
-                  // </div>
-                  <div>Page No Here</div>
-                );
-              })}
-              <div onClick={incrpage} className={prodstyles.othernum}>
-                Next
-              </div>
-            </div>
+            )}
           </div>
         </Box>
       </Flex>

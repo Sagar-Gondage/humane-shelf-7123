@@ -2,7 +2,7 @@ import {
   GET_ALL_PRODUCT_FAIL,
   GET_ALL_PRODUCT_REQUEST,
   GET_ALL_PRODUCT_SUCCESS,
-} from "../constants/reducer.constants.js/product.constants";
+} from "../../constants/reducer.constants.js/product.constants";
 
 export const productListReducer = (state = { products: [] }, action) => {
   switch (action.type) {
