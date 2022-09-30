@@ -22,7 +22,12 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.6",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@fontsource/clear-sans": "^4.5.3",
+    "react-alice-carousel": "^2.6.4",
+    "react-multi-carousel": "^2.8.2",
+    "react-simple-image-slider": "^2.4.1",
+    "uuid": "^9.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
