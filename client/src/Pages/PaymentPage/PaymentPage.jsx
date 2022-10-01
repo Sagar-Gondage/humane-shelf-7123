@@ -1,11 +1,20 @@
 import { Box, Stack, Text } from "@chakra-ui/react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import About from "../CartPage/Reuseable/About";
 import TaxCard from "../CartPage/Reuseable/TaxCard";
 import AddressBar from "./AddressBar";
 import Card from "./Card";
 
 const PaymentPage = () => {
+  const data = JSON.parse(localStorage.getItem("cartItems")) || [];
+  const getTotal = data.reduce((acc, ele) => acc + ele.price, 0);
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/");
+  };
+
   return (
     <Box bg="#f8f8f8">
       <Stack
@@ -27,7 +36,7 @@ const PaymentPage = () => {
           <br />
           <AddressBar />
           <br />
-          <TaxCard />
+          <TaxCard getTotal={getTotal} handleNavigate={handleNavigate} />
         </Box>
       </Stack>
       <About />

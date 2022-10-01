@@ -2,17 +2,65 @@ import {
   Box,
   Button,
   FormControl,
-  FormLabel,
   Input,
   Radio,
   RadioGroup,
   Stack,
   Text,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import About from "../CartPage/Reuseable/About";
 
 const AdressPage = () => {
+  const [radio, setRadio] = useState("Home");
+  const [add, setadd] = useState({
+    landmark: "",
+    building: "",
+    mobileno: "",
+    pincode: "",
+    locality: "",
+    city: "",
+    customer: "",
+    state: "",
+    delivery: radio,
+  });
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setadd({ ...add, [name]: value });
+  };
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    localStorage.setItem("address", JSON.stringify(add));
+    setadd({
+      landmark: "",
+      building: "",
+      mobileno: "",
+      pincode: "",
+      locality: "",
+      city: "",
+      customer: "",
+      state: "",
+      delivery: radio,
+    });
+
+    navigate("/cart/payment/all/card");
+  };
+
+  const handleCancel = () => {
+    setadd({
+      landmark: "",
+      building: "",
+      mobileno: "",
+      pincode: "",
+      locality: "",
+      city: "",
+      customer: "",
+      state: "",
+      delivery: "",
+    });
+  };
   return (
     <Box bg="#f8f8f8" p="4rem" pr="5rem">
       <Text fontSize={"25px"} fontWeight="500">
@@ -22,52 +70,104 @@ const AdressPage = () => {
       <Box bg="white" w="50%" p="1rem">
         <FormControl>
           <Input
+            name="building"
+            onChange={handleOnChange}
             h="5rem"
             placeholder="Flat Number Building Name , Street/Locality"
             type="text"
+            value={add.building}
           />
           <br />
           <br />
 
-          <Input placeholder="Landmark (Optional)" type="text" />
+          <Input
+            name="landmark"
+            onChange={handleOnChange}
+            placeholder="Landmark (Optional)"
+            type="text"
+            value={add.landmark}
+          />
           <br />
           <br />
 
-          <Input placeholder="Pincode" type="text" />
+          <Input
+            name="pincode"
+            onChange={handleOnChange}
+            placeholder="Pincode"
+            type="text"
+            value={add.pincode}
+          />
           <br />
           <br />
 
-          <Input placeholder="Locality" type="text" />
+          <Input
+            name="locality"
+            onChange={handleOnChange}
+            placeholder="Locality"
+            type="text"
+            value={add.locality}
+          />
           <br />
           <br />
 
-          <Input placeholder="City" type="text" />
+          <Input
+            name="city"
+            onChange={handleOnChange}
+            placeholder="City"
+            type="text"
+            value={add.city}
+          />
           <br />
           <br />
 
-          <Input placeholder="State" type="text" />
+          <Input
+            name="state"
+            onChange={handleOnChange}
+            placeholder="State"
+            type="text"
+            value={add.state}
+          />
           <br />
           <br />
 
-          <Input placeholder="Customer Name" type="text" />
+          <Input
+            name="customer"
+            onChange={handleOnChange}
+            placeholder="Customer Name"
+            type="text"
+            value={add.customer}
+          />
           <br />
           <br />
 
-          <Input placeholder="10 Digit Mobile Number" type="text" />
+          <Input
+            name="mobileno"
+            onChange={handleOnChange}
+            placeholder="10 Digit Mobile Number"
+            type="text"
+            value={add.mobileno}
+          />
           <br />
           <br />
 
-          <RadioGroup>
+          <RadioGroup defaultValue={"Home"} onChange={setRadio}>
             <Stack direction="row" spacing={5}>
-              <Radio colorScheme={"orange"}>HOME</Radio>
-              <Radio colorScheme={"orange"}>OFFICE</Radio>
-              <Radio colorScheme={"orange"}>OTHER</Radio>
+              <Radio value="Home" colorScheme={"orange"}>
+                HOME
+              </Radio>
+              <Radio value="Office" colorScheme={"orange"}>
+                OFFICE
+              </Radio>
+              <Radio value="Other" colorScheme={"orange"}>
+                OTHER
+              </Radio>
             </Stack>
           </RadioGroup>
           <br />
           <br />
           <Stack direction="row" spacing={5} justifyContent="right">
             <Button
+              onClick={handleCancel}
               color="#ff6f61"
               fontSize={"22px"}
               bg="White"
@@ -76,6 +176,7 @@ const AdressPage = () => {
               CANCEL
             </Button>
             <Button
+              onClick={handleSubmit}
               color="white"
               fontSize={"22px"}
               bg="#ff6f61"
