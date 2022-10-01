@@ -38,6 +38,7 @@ const AuthSlider = () => {
         pagination={{
           clickable: true,
         }}
+        
         navigation={false}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"

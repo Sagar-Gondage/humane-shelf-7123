@@ -168,15 +168,15 @@ const Stage1 = ({
   }, []);
 
   return (
-    <Box>
+    <Box width='250px'>
       <form onSubmit={handleSendOtp}>
         <div id="recaptcha-container"></div>
         <Flex
           flexDirection={"column"}
           justifyContent="space-between"
-          gap={"80px"}
+          gap={"0px"}
         >
-          <Box>
+          <Box >
             <Box>
               <Heading fontSize={"28px"} fontWeight={700}>
                 Sign Up
@@ -212,7 +212,7 @@ const Stage1 = ({
               >
                 {message
                   ? message
-                  : "Something wen wrong ! Please try again later."}
+                  : "Something went wrong ! Please try again later."}
               </Text>
             </Box>
           </Box>
@@ -223,6 +223,7 @@ const Stage1 = ({
               isLoading={loading}
               loadingText=""
               colorScheme="orange"
+              marginTop={2}
             >
               CONTINUE
             </Button>

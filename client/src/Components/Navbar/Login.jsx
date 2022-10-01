@@ -150,7 +150,7 @@ const Stage1 = ({
   }, []);
 
   return (
-    <Box>
+    <Box width='250px'>
       <form onSubmit={handleSendOtp}>
         <div id="recaptcha-container"></div>
         <Flex
@@ -164,7 +164,7 @@ const Stage1 = ({
                 Login
               </Heading>
             </Box>
-            <Box m={"10px 0 60px"}>
+            <Box m={"10px 0 10px"}>
               <Text fontSize={"12px"} color={"#616161"}>
                 Get access to your orders, lab tests & doctor consultations
               </Text>

@@ -1,17 +1,20 @@
 import "./App.css";
+import { Container } from "@chakra-ui/react";
+
 import Footer from "./Components/Footer/Footer";
 import { Routes, Route } from "react-router-dom";
 import AllProductPage from "./Pages/products/AllProductPage";
 import Homepage from "./Pages/Homepage/Homepage";
-import Navigation from "./Components/Navigation/Navigation";
 import Navbar from "./Components/Navbar";
 import Auth from "./Components/Navbar/Auth";
 import Profile from "./Pages/Profile";
 
 function App() {
   return (
-    <div>
+    <Container className='App'  maxW={"none"} p={0}>
+      <nav>
       <Navbar />
+      </nav>
       <Auth />
       <Routes>
         <Route path="/" element={<Homepage />} />
@@ -20,7 +23,7 @@ function App() {
 
       </Routes>
       <Footer />
-    </div>
+    </Container>
   );
 }
 

@@ -100,14 +100,14 @@ import {
         >
           <ModalOverlay />
           <ModalContent
-            maxW={successful ? "400px" : ["400px", "400px", "900px"]}
-            minH={successful ? "" : "440px"}
+            maxW={successful ? "250px" : ["250px", "250px", "700px"]}
+            minH={successful ? "" : "340px"}
           >
             {!successful && <ModalCloseButton onClick={onCloseAuth} />}
   
             <ModalBody padding={"10px"}>
               {!successful ? (
-                <Flex>
+                <Flex justifyContent='center' >
                   <Swiper
                     style={{
                       maxHeight: "200px !important",
@@ -128,15 +128,17 @@ import {
                     navigation={false}
                     modules={[Autoplay, Pagination, Navigation]}
                     className="mySwiper"
+                    
                   >
                     {data.map((item, index) => (
-                      <Box key={uuidv4()}>
+                      <Box key={uuidv4()}  >
                         <SwiperSlide
                           key={uuidv4()}
                           style={{ maxHeight: "170px" }}
                           className={"mySwiper-slider"}
+                         
                         >
-                          <Box textAlign={"center"}>
+                          <Box textAlign={"center"} >
                             <Flex justifyContent={"center"}>
                               <Image src={item.imgUrl} height="auto" />
                             </Flex>

@@ -70,7 +70,7 @@ import {
         zIndex={"sticky"}
         bg={"white"}
         w={"100%"}
-        position={"fixed"}
+        position={"sticky"}
         top={0}
         left={0}
         right={0}
@@ -205,6 +205,7 @@ import {
                             JSON.parse(localStorage.getItem("currentLogin"))._id
                           )
                         );
+                        navigate('/')
                       }}
                     >
                       Logout
