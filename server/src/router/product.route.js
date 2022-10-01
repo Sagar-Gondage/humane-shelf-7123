@@ -69,6 +69,7 @@ ProductRouter.get("/filter", async (req, res) => {
 });
 
 ProductRouter.get("/search", async (req, res) => {
+  console.log(req.query.q);
   try {
     let result = await ProductModel.aggregate([
       {
