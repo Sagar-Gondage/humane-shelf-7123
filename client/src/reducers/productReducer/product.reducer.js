@@ -33,7 +33,7 @@ export const productListReducer = (
       return { ...state, loading: false, filteredProducts: action.payload };
     }
     case GET_DISCOUNT_PRODUCT_SUCCESS: {
-      console.log("success");
+      // console.log("success");
       return {
         ...state,
         loading: false,

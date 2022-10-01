@@ -19,7 +19,7 @@ const AllProduct = ({ product }) => {
   const [productCountState, setProductCountState] = useState(0);
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
-  console.log("cartItems", cartItems);
+  // console.log("cartItems", cartItems);
   const itemIdsFromCart = cartItems.map((el) => el._id);
   const itemIdandCount = cartItems.map((el) => [el._id, el.count]);
   let cartProduct = cartItems.find((el) => el._id == product._id);
@@ -33,8 +33,8 @@ const AllProduct = ({ product }) => {
   };
 
   const handleIncreaseCartProudct = (newProduct) => {
-    console.log("cartItems", cartItems);
-    console.log("newProduct", newProduct);
+    // console.log("cartItems", cartItems);
+    // console.log("newProduct", newProduct);
 
     cartItems.find((el) => el._id == newProduct._id).productCount =
       newProduct.productCount + 1;
@@ -45,7 +45,7 @@ const AllProduct = ({ product }) => {
   const handleDecreaseCartProudct = (newProduct) => {
     if (newProduct.productCount == 1) {
       let newCart = cartItems.filter((el) => el._id != newProduct._id);
-      console.log("newCart", newCart);
+      // console.log("newCart", newCart);
       dispatch(updateCartCount(newCart));
     } else {
       cartItems.find((el) => el._id == newProduct._id).productCount =

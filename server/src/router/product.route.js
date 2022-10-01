@@ -12,7 +12,7 @@ ProductRouter.get("/data/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const data = await ProductModel.findById(id).exec();
-    console.log("datas", data);
+    // console.log("datas", data);
     res.status(201).send({ data: data, message: "request successfull" });
   } catch (error) {
     res.status(404).json(error);
@@ -69,7 +69,7 @@ ProductRouter.get("/filter", async (req, res) => {
 });
 
 ProductRouter.get("/search", async (req, res) => {
-  console.log(req.query.q);
+  // console.log(req.query.q);
   try {
     let result = await ProductModel.aggregate([
       {

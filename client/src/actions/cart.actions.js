@@ -4,13 +4,13 @@ import {
 } from "../constants/reducer.constants.js/cart.constants";
 
 export const addItemToCart = (payload) => (dispatch) => {
-  console.log("add item to cart payload", payload);
+  // console.log("add item to cart payload", payload);
   localStorage.setItem("cartItems", JSON.stringify(payload));
   dispatch({ type: ADD_ITEM_TO_CART_SUCCESS, payload: payload });
 };
 
 export const updateCartCount = (payload) => (dispatch) => {
-  console.log("updated cart", payload);
+  // console.log("updated cart", payload);
   localStorage.setItem("cartItems", JSON.stringify(payload));
   dispatch({ type: ADD_ITEM_TO_CART_SUCCESS, payload: payload });
 };

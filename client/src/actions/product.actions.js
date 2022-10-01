@@ -50,7 +50,7 @@ export const getDiscountProductAPI = (payload) => async (dispatch) => {
       `http://localhost:8080/products/filter?discount=${payload}`
     );
     // console.log(data.data);
-    console.log(data.data);
+    // console.log(data.data);
     dispatch({ type: GET_DISCOUNT_PRODUCT_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({
@@ -62,7 +62,7 @@ export const getDiscountProductAPI = (payload) => async (dispatch) => {
 
 //// SINGLE PRODUCTS
 export const getSingleProductAPI = (id) => async (dispatch) => {
-  console.log("in single Proudct");
+  // console.log("in single Proudct");
   dispatch({ type: GET_SINGLE_PRODUCT_REQUEST });
   try {
     const { data } = await axios.get(
