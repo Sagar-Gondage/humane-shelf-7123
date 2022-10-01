@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart, updateCartCount } from "../actions/cart.actions";
 
 const AllProduct = ({ product }) => {
-  const [productCountState, setProductCountState] = useState(0);
+  // const [productCountState, setProductCountState] = useState(0);
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
   // console.log("cartItems", cartItems);
@@ -34,7 +34,7 @@ const AllProduct = ({ product }) => {
 
   const handleIncreaseCartProudct = (newProduct) => {
     // console.log("cartItems", cartItems);
-    // console.log("newProduct", newProduct);
+    console.log("newProduct", newProduct);
 
     cartItems.find((el) => el._id == newProduct._id).productCount =
       newProduct.productCount + 1;

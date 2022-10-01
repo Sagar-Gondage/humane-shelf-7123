@@ -11,7 +11,7 @@ import {
 } from "../../constants/reducer.constants.js/product.constants";
 
 export const cartReducer = (state = { cartItems: [] }, action) => {
-  // console.log("Payload", action.ayload);
+  console.log("Payload", action.payload);
   switch (action.type) {
     case ADD_ITEM_TO_CART_SUCCESS: {
       return { ...state, cartItems: action.payload };

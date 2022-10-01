@@ -1,21 +1,49 @@
 import { Box, Button, Text } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React from "react";
 import { BsTrash } from "react-icons/bs";
 import { IoIosAddCircle } from "react-icons/io";
 import { GrSubtractCircle } from "react-icons/gr";
+import { useDispatch, useSelector } from "react-redux";
+import { updateCartCount } from "../../../actions/cart.actions";
 
-const ItemsCard = () => {
-  let price = 24;
+const ItemsCard = ({ productsData, settrigger }) => {
+  const dispatch = useDispatch();
+  const { cartItems } = useSelector((state) => state.cart);
 
-  const [count, setcount] = useState(1);
-  const [inc, setinc] = useState(price);
-  const handleINC = () => {
-    setcount(count + 1);
-    setinc(inc + price);
+  let cartProduct = cartItems.find((el) => el._id === productsData._id);
+
+  const handleIncreaseCartProudct = (newProduct) => {
+    // console.log("cartItems", cartItems);
+    // console.log("newProduct", newProduct.productCount);
+    newProduct.productCount = newProduct.productCount + 1;
+    let res =
+      (newProduct.price * newProduct.productCount) /
+      (newProduct.productCount * (newProduct.productCount - 1));
+
+    newProduct.price += Math.round(res);
+    console.log("newProduct", newProduct.productCount);
+    console.log("price", newProduct.price);
+    dispatch(updateCartCount(cartItems));
+    settrigger((prev) => !prev);
   };
-  const handleDEC = () => {
-    setcount(count - 1);
-    setinc(inc - price);
+
+  const handleDecreaseCartProudct = (newProduct) => {
+    newProduct.productCount = newProduct.productCount - 1;
+
+    let res = newProduct.price / (newProduct.productCount + 1);
+
+    // console.log(res)
+    newProduct.price -= Math.round(res);
+
+    dispatch(updateCartCount(cartItems));
+    settrigger((prev) => !prev);
+  };
+
+  const handleRemovefromCart = (newProduct) => {
+    let newCart = cartItems.filter((el) => el._id !== newProduct._id);
+    // console.log("newCart", newCart);
+    dispatch(updateCartCount(newCart));
+    settrigger((prev) => !prev);
   };
   return (
     <Box
@@ -27,37 +55,43 @@ const ItemsCard = () => {
     >
       {/* 1 */}
       <Box>
-        <Text fontWeight={"600"}>
-          Himalaya Herbals Purifying Neem Face Wash
-        </Text>
+        <Text fontWeight={"600"}>{productsData.productName}</Text>
         <br />
-        <Text>pump bottle of 200 ml Face Wash</Text>
+        <Text>{productsData.shortDesc}</Text>
         <br />
-        <Button bg={"white"} _hover={{ bg: "white" }} mt="1rem">
+        <Button
+          onClick={() => handleRemovefromCart(cartProduct)}
+          bg={"white"}
+          _hover={{ bg: "white" }}
+          mt="1rem"
+        >
           <BsTrash /> Remove
         </Button>
       </Box>
       {/* 2 */}
       <Box textAlign={"right"}>
-        <Text>rs {inc}</Text>
+        <Text>rs {productsData.price}</Text>
         <br />
         <Text>
-          MRP <span style={{ textDecoration: "line-through" }}>₹68</span>
+          MRP{" "}
+          <span style={{ textDecoration: "line-through" }}>
+            ₹{productsData.strikedPrice}
+          </span>
         </Text>
         <br />
         <Box display={"flex"} mt="1rem">
           <Button
-            disabled={count === 1}
-            onClick={handleDEC}
+            disabled={productsData.productCount === 1}
+            onClick={() => handleDecreaseCartProudct(cartProduct)}
             bg={"white"}
             _hover={{ bg: "white" }}
             borderRadius="90%"
           >
             <GrSubtractCircle fontSize="2rem" />
           </Button>
-          <Text>{count}</Text>
+          <Text>{productsData.productCount}</Text>
           <Button
-            onClick={handleINC}
+            onClick={() => handleIncreaseCartProudct(cartProduct)}
             bg={"white"}
             _hover={{ bg: "white" }}
             borderRadius="90%"

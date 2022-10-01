@@ -1,7 +1,8 @@
 import { Box, Button, Text } from "@chakra-ui/react";
 import React from "react";
 
-const TaxCard = ({ btn = "CHECKOUT" }) => {
+const TaxCard = ({ btn = "CHECKOUT", getTotal, handleNavigate }) => {
+  let price = getTotal - 40;
   return (
     <Box
       bg="white"
@@ -12,7 +13,7 @@ const TaxCard = ({ btn = "CHECKOUT" }) => {
       {/* 1 */}
       <Box display={"flex"} justifyContent="space-between" mb="1rem">
         <Text>Item Total(MRP)</Text>
-        <Text>₹303</Text>
+        <Text>₹{getTotal}</Text>
       </Box>
 
       {/* 2 */}
@@ -44,7 +45,7 @@ const TaxCard = ({ btn = "CHECKOUT" }) => {
         mb="1rem"
       >
         <Text>To be paid</Text>
-        <Text>₹263</Text>
+        <Text>₹{price}</Text>
       </Box>
       {/* 4 */}
       <Box
@@ -63,6 +64,7 @@ const TaxCard = ({ btn = "CHECKOUT" }) => {
       {/* 5 */}
       <Box h="4rem">
         <Button
+          onClick={handleNavigate}
           fontSize={"1rem"}
           color="white"
           bg="#ff6f61"
