@@ -6,9 +6,12 @@ import {
   singleProductReducer,
 } from "../reducers/productReducer//product.reducer";
 import { cartReducer } from "../reducers/productReducer/cart.reducer";
+import { authReducer } from "./authentication/auth.reducer";
+
 
 const reducer = combineReducers({
   productList: productListReducer,
+  auth: authReducer,
   cart: cartReducer,
   singleProduct: singleProductReducer,
 });

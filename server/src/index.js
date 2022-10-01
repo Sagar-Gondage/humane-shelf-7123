@@ -3,9 +3,8 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const ProductRouter = require("./router/product.route");
+const UserRouter = require("./router/User.router");
 
-
-const UserRouter = require("./router/user.route");
 
 
 dotenv.config();
@@ -14,6 +13,7 @@ const mongodb_url =
   process.env.MONGO_URL || "mongodb://localhost:27017/tata1mg";
 const PORT = process.env.PORT;
 
+const cors = require("cors");
 
 app.use(cors());
 
@@ -22,7 +22,6 @@ app.use(express.json());
 
 //Product Route
 app.use("/products", ProductRouter);
-
 
 //User Route
 app.use("/user",UserRouter);

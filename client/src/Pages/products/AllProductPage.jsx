@@ -18,7 +18,6 @@ import {
 } from "../../actions/product.actions";
 import {
   AllBrands,
-  allDiscounts,
 } from "../../constants/function.constants.js/function.constants";
 import AllProduct from "../../Components/allProductCart";
 import { GET_FILTERED_PROUDCT_SUCCESS } from "../../constants/reducer.constants.js/product.constants";
