@@ -19,24 +19,28 @@ const PaymentPage = () => {
     <Box bg="#f8f8f8">
       <Stack
         p="2rem"
-        w="70%"
+        w={{ lg: "80%" }}
         m="auto"
         bg="white"
-        direction={"row"}
+        direction={{ lg: "row", md: "column", sm: "column" }}
         justifyContent="space-between"
       >
-        <Box w="50%">
+        <Box w={{ lg: "50%", sm: "100%", md: "100%" }}>
           <Text fontSize={"25px"} fontWeight="500">
             Card Payment
           </Text>
           <Card />
         </Box>
 
-        <Box w="40%">
+        <Box w={{ lg: "40%", sm: "100%", md: "100%" }}>
           <br />
           <AddressBar />
           <br />
-          <TaxCard getTotal={getTotal} handleNavigate={handleNavigate} />
+          <TaxCard
+            btn={"MAKE PAYMENT"}
+            getTotal={getTotal}
+            handleNavigate={handleNavigate}
+          />
         </Box>
       </Stack>
       <About />
