@@ -4,11 +4,14 @@ import { Container } from "@chakra-ui/react";
 import Footer from "./Components/Footer/Footer";
 import { Routes, Route } from "react-router-dom";
 import AllProductPage from "./Pages/products/AllProductPage";
-import Homepage from "./Pages/Homepage/Homepage";
 import Navbar from "./Components/Navbar";
 import Auth from "./Components/Navbar/Auth";
 import Profile from "./Pages/Profile";
-
+import Homepage from "./Pages/Homepage/Homepage";
+import Cartpage from "./Pages/CartPage/Cartpage";
+import AdressPage from "./Pages/AddressPage/AdressPage";
+import PaymentPage from "./Pages/PaymentPage/PaymentPage";
+import SingleProductPage from "./Pages/products/SingleProductPage";
 function App() {
   return (
     <Container className='App'  maxW={"none"} p={0}>
@@ -20,7 +23,10 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/allProducts" element={<AllProductPage />} />
         <Route path="/profile" element={<Profile />} />
-
+        <Route path="/cart" element={<Cartpage />} />
+        <Route path="/cart/address-page" element={<AdressPage />} />
+        <Route path="/cart/payment/all/card" element={<PaymentPage />} />
+        <Route path="/product/:id" element={<SingleProductPage />} />
       </Routes>
       <Footer />
     </Container>

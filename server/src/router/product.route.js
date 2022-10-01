@@ -2,27 +2,22 @@ const { Router } = require("express");
 const ProductModel = require("../model/product.model");
 const ProductRouter = Router();
 
-
-
 ProductRouter.get("/", async (req, res) => {
   let data = await ProductModel.find({});
-  
+
   res.send({ data: data, message: "request successfull" });
 });
 
-
 ProductRouter.get("/data/:id", async (req, res) => {
-  
   const { id } = req.params;
   try {
-    const datas = await ProductModel.findById({ _id: id });
-    
-    res.status(201).send({ data: datas, message: "request successfull" });
+    const data = await ProductModel.findById(id).exec();
+    // console.log("datas", data);
+    res.status(201).send({ data: data, message: "request successfull" });
   } catch (error) {
     res.status(404).json(error);
   }
 });
-
 
 let sortQuery = {
   rel: "",
@@ -33,7 +28,7 @@ let sortQuery = {
 };
 ProductRouter.get("/filter", async (req, res) => {
   let { brand, sort, discount } = req.query;
- 
+
   let data;
   if (brand) {
     brand = brand.split(",");
@@ -74,6 +69,7 @@ ProductRouter.get("/filter", async (req, res) => {
 });
 
 ProductRouter.get("/search", async (req, res) => {
+  // console.log(req.query.q);
   try {
     let result = await ProductModel.aggregate([
       {
@@ -89,7 +85,7 @@ ProductRouter.get("/search", async (req, res) => {
         },
       },
     ]);
-    
+
     res.status(200).send(result);
   } catch (e) {
     res.status(500).send({ message: e.message });

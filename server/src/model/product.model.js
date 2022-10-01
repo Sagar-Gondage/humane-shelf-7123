@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const productSchema = mongoose.Schema({
+  _id: String,
   productName: String,
   price: Number,
   strikedPrice: Number,
@@ -12,7 +13,6 @@ const productSchema = mongoose.Schema({
   numberOfRatings: String,
   discount: Number,
   brand: String,
-  
 });
 
 const ProductModel = mongoose.model("tataprod", productSchema);
