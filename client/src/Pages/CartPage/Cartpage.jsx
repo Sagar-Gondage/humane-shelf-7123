@@ -21,11 +21,16 @@ const Cartpage = () => {
   };
   console.log(trigger);
   return (
-    <Box bg="#f8f8f8" p="2rem" px={"10rem"}>
+    <Box bg="#f8f8f8" p={{ lg: "2rem", md: "1rem" }} px={{ lg: "5rem" }}>
       {/* this box will have cards  */}
-      <Box display={"flex"} justifyContent="space-between" w="90" m="auto">
+      <Box
+        display={"flex"}
+        flexDirection={{ lg: "row", md: "column", sm: "column" }}
+        justifyContent="space-between"
+        m="auto"
+      >
         {/* this one will have cart items and products  */}
-        <Box w="60%">
+        <Box w={{ lg: "60%", md: "100%", sm: "100%" }}>
           {data.length > 0 &&
             data.map((e) => (
               <ItemsCard
@@ -45,11 +50,11 @@ const Cartpage = () => {
           >
             Popular Categories
           </Text>
-          <ProductsCard something={topSellingProducts} prodVal={4} />
+          <ProductsCard something={topSellingProducts} prodVal={3} />
         </Box>
 
         {/* thi sone will have total coupons etc  */}
-        <Box w="35%">
+        <Box w={{ lg: "35%", md: "100%" }}>
           <CouponCard />
           <br />
           <TaxCard getTotal={getTotal} handleNavigate={handleNavigate} />

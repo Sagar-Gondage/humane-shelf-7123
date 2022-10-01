@@ -91,6 +91,7 @@ const ItemsCard = ({ productsData, settrigger }) => {
           </Button>
           <Text>{productsData.productCount}</Text>
           <Button
+            disabled={productsData.productCount === 5}
             onClick={() => handleIncreaseCartProudct(cartProduct)}
             bg={"white"}
             _hover={{ bg: "white" }}

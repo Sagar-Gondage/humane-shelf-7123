@@ -3,7 +3,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <Box p="2rem" display={"flex"} gap="2rem">
+    <Box p="2rem" display={"flex"} gap="2rem" mt={{ sm: "-1rem", md: "-1rem" }}>
       <Box borderTop="1px solid grey">
         <br />
         <Text>

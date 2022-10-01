@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Flex,
   Image,
   Spinner,
@@ -14,6 +15,8 @@ import { BiRupee } from "react-icons/bi";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart, updateCartCount } from "../actions/cart.actions";
+import { GrSubtractCircle } from "react-icons/gr";
+import { IoIosAddCircle } from "react-icons/io";
 
 const AllProduct = ({ product }) => {
   // const [productCountState, setProductCountState] = useState(0);
@@ -204,13 +207,29 @@ const AllProduct = ({ product }) => {
               </AddToCartBtn>
             ) : (
               <Flex>
-                <Text onClick={() => handleIncreaseCartProudct(cartProduct)}>
-                  Inc
-                </Text>
+                <Button
+                  disabled={cartProduct.productCount === 5}
+                  bg={"white"}
+                  _hover={{ bg: "white" }}
+                  borderRadius="90%"
+                  onClick={() => handleIncreaseCartProudct(cartProduct)}
+                >
+                  <IoIosAddCircle
+                    fontSize="1.5rem"
+                    color="#ff6f61"
+                    cursor={"pointer"}
+                  />
+                </Button>
                 <Text>{cartProduct.productCount}</Text>
-                <Text onClick={() => handleDecreaseCartProudct(cartProduct)}>
-                  Dec
-                </Text>
+                <Button
+                  disabled={cartProduct.productCount === 1}
+                  bg={"white"}
+                  _hover={{ bg: "white" }}
+                  borderRadius="90%"
+                  onClick={() => handleDecreaseCartProudct(cartProduct)}
+                >
+                  <GrSubtractCircle fontSize="1.5rem" cursor={"pointer"} />
+                </Button>
               </Flex>
             )}
           </Stack>

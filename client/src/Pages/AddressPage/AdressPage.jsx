@@ -62,12 +62,16 @@ const AdressPage = () => {
     });
   };
   return (
-    <Box bg="#f8f8f8" p="4rem" pr="5rem">
+    <Box
+      bg="#f8f8f8"
+      p={{ lg: "4rem", md: "2rem", sm: "0.5rem" }}
+      pr={{ lg: "5rem" }}
+    >
       <Text fontSize={"25px"} fontWeight="500">
         Add New Address
       </Text>
       <br />
-      <Box bg="white" w="50%" p="1rem">
+      <Box bg="white" w={{ lg: "50%", sm: "100%", md: "100%" }} p="1rem">
         <FormControl>
           <Input
             name="building"
@@ -188,7 +192,7 @@ const AdressPage = () => {
         </FormControl>
       </Box>
 
-      <Box w="50%" fontSize={"12px"}>
+      <Box w={{ lg: "50%" }} fontSize={"12px"}>
         <About />
       </Box>
     </Box>
