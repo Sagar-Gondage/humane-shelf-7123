@@ -8,10 +8,13 @@ import {
   Text,
 } from "@chakra-ui/react";
 import prodstyles from "../css/allProducts.module.css";
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProductsAPI } from "../../actions/product.actions";
+import {
+  filterByBrandAPI,
+  getAllProductsAPI,
+} from "../../actions/product.actions";
 import {
   AllBrands,
   allDiscounts,
@@ -20,21 +23,37 @@ import AllProduct from "../../Components/allProductCart";
 
 const AllProductPage = () => {
   const { productList } = useSelector((state) => state);
-  const { loading, success, products } = productList;
-  // console.log(products);
+  const { loading, success, products, filteredProducts } = productList;
+  console.log("productLIst", productList);
+  // console.log("products", products);
+  const [arr, setArr] = useState([]);
   const dispatch = useDispatch();
 
   const brands = AllBrands(products);
+
+  const discountValues = [10, 25, 20, 25];
 
   const pageno = [];
 
   useEffect(() => {
     dispatch(getAllProductsAPI());
-  }, [dispatch]);
+  }, []);
 
-  const filterbybrand = () => {};
+  useEffect(() => {
+    let payload = arr.join(",");
+    dispatch(filterByBrandAPI(payload));
+  }, [arr]);
 
-  const filterbydiscount = () => {};
+  const filterbybrand = (e) => {
+    if (e.target.checked) {
+      setArr([...arr, e.target.value]);
+    } else {
+      let temp = arr.filter((el) => el !== e.target.value);
+      setArr(temp);
+    }
+  };
+
+  const onDicountFilterHanlde = () => {};
 
   const handleSort = () => {};
 
@@ -90,7 +109,7 @@ const AllProductPage = () => {
                       >
                         <input
                           type="checkbox"
-                          value={el.count}
+                          value={el.name}
                           onChange={filterbybrand}
                           style={{ width: "15px", height: "15px" }}
                         />
@@ -111,6 +130,38 @@ const AllProductPage = () => {
                 >
                   DISCOUNTS
                 </div>
+
+                {discountValues.map((el, index) => {
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        fontSize: "12px",
+                        paddingTop: "10px",
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <input
+                          defaultChecked={true}
+                          type="radio"
+                          name="discount"
+                          value={el}
+                          onChange={onDicountFilterHanlde}
+                          style={{ width: "15px", height: "15px" }}
+                        />
+                        <p style={{ paddingLeft: "10px" }}>{el} % and above</p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -137,7 +188,8 @@ const AllProductPage = () => {
               </Select>
             </Flex>
           </Flex>
-          {loading && (
+
+          {loading ? (
             <Spinner
               thickness="4px"
               speed="0.65s"
@@ -147,21 +199,23 @@ const AllProductPage = () => {
               marginLeft="100%"
               marginTop="50%"
             />
+          ) : (
+            <Grid
+              width={"100%"}
+              // border={"1px solid orange"}
+              templateColumns={[
+                "repeat(2, 1fr)",
+                "repeat(3, 1fr)",
+                "repeat(4, 1fr)",
+              ]}
+              gap={4}
+            >
+              {filteredProducts.map((el, i) => (
+                <AllProduct product={el} key={i} />
+              ))}
+            </Grid>
           )}
-          <Grid
-            width={"100%"}
-            // border={"1px solid orange"}
-            templateColumns={[
-              "repeat(2, 1fr)",
-              "repeat(3, 1fr)",
-              "repeat(4, 1fr)",
-            ]}
-            gap={4}
-          >
-            {products.map((el, i) => (
-              <AllProduct product={el} key={i} />
-            ))}
-          </Grid>
+
           <div
             style={{
               backgroundColor: "white",
