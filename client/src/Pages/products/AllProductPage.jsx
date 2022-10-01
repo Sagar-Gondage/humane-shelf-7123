@@ -14,7 +14,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProductsAPI } from "../../actions/product.actions";
 import {
   AllBrands,
-  allDiscounts,
 } from "../../constants/function.constants.js/function.constants";
 import AllProduct from "../../Components/allProductCart";
 
