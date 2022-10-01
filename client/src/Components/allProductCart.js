@@ -12,11 +12,49 @@ import { Link } from "react-router-dom";
 import { StarIcon } from "@chakra-ui/icons";
 import { BiRupee } from "react-icons/bi";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { addItemToCart, updateCartCount } from "../actions/cart.actions";
 
 const AllProduct = ({ product }) => {
-  const [count, setCount] = useState(0);
+  const [productCountState, setProductCountState] = useState(0);
+  const dispatch = useDispatch();
+  const { cartItems } = useSelector((state) => state.cart);
+  console.log("cartItems", cartItems);
+  const itemIdsFromCart = cartItems.map((el) => el._id);
+  const itemIdandCount = cartItems.map((el) => [el._id, el.count]);
+  let cartProduct = cartItems.find((el) => el._id == product._id);
+  // console.log("count", cartProduct);
+  // console.log(itemIdsFromCart);
 
-  const handleAddToCart = () => {};
+  const handleAddToCart = (newProduct) => {
+    newProduct.productCount = 1;
+    let newCart = [...cartItems, newProduct];
+    dispatch(addItemToCart(newCart));
+  };
+
+  const handleIncreaseCartProudct = (newProduct) => {
+    console.log("cartItems", cartItems);
+    console.log("newProduct", newProduct);
+
+    cartItems.find((el) => el._id == newProduct._id).productCount =
+      newProduct.productCount + 1;
+
+    dispatch(updateCartCount(cartItems));
+  };
+
+  const handleDecreaseCartProudct = (newProduct) => {
+    if (newProduct.productCount == 1) {
+      let newCart = cartItems.filter((el) => el._id != newProduct._id);
+      console.log("newCart", newCart);
+      dispatch(updateCartCount(newCart));
+    } else {
+      cartItems.find((el) => el._id == newProduct._id).productCount =
+        newProduct.productCount - 1;
+
+      dispatch(updateCartCount(cartItems));
+    }
+  };
+
   return (
     <Box
       border={"1px solid #eee"}
@@ -39,10 +77,7 @@ const AllProduct = ({ product }) => {
         rounded={4}
         position={"relative"}
       >
-        <Link
-          to={`/products/${product._id}`}
-          style={{ textDecoration: "none" }}
-        >
+        <Link to={`/product/${product._id}`} style={{ textDecoration: "none" }}>
           <Image
             src={product?.imageUrl}
             h="150px"
@@ -157,50 +192,25 @@ const AllProduct = ({ product }) => {
             <Text fontSize={"16px"}> {product.price}</Text>
           </Flex>
           <Stack>
-            {count === 0 ? (
+            {!itemIdsFromCart.includes(product._id) ? (
               <AddToCartBtn
                 key={product._id}
                 onClick={() => handleAddToCart(product)}
               >
-                {/* {addCartItem.loading && addCartItem._id === product._id ? (
-                  <Spinner speed="0.65s" size="xs" />
-                ) : (
-                  <Flex>
-                    <CartPlusIcon className="fa-solid fa-cart-plus"></CartPlusIcon>
-                    ADD
-                  </Flex>
-                )} */}
-                Add
+                <Flex>
+                  <CartPlusIcon className="fa-solid fa-cart-plus"></CartPlusIcon>
+                  ADD
+                </Flex>
               </AddToCartBtn>
             ) : (
               <Flex>
-                <CartDec>
-                  <i className="fa-solid fa-minus"></i>
-                </CartDec>
-                <Tooltip
-                  hasArrow
-                  label={`Max Qty 5`}
-                  bg="#666"
-                  opacity={"0.5"}
-                  color="white"
-                  placement="top"
-                  fontWeight={400}
-                  fontSize="12px"
-                >
-                  {/* {updateCartItem.loading &&
-                  updateCartItem._id == product._id ? (
-                    <CardCount>
-                      <Spinner speed="0.65s" size="xs" />
-                    </CardCount>
-                  ) : (
-                    <CardCount>{countValue}</CardCount>
-                  )} */}
-                  Count
-                </Tooltip>
-
-                <CartInc disabled={count >= 5}>
-                  <i className="fa-solid fa-plus"></i>
-                </CartInc>
+                <Text onClick={() => handleIncreaseCartProudct(cartProduct)}>
+                  Inc
+                </Text>
+                <Text>{cartProduct.productCount}</Text>
+                <Text onClick={() => handleDecreaseCartProudct(cartProduct)}>
+                  Dec
+                </Text>
               </Flex>
             )}
           </Stack>
@@ -261,4 +271,13 @@ const CartInc = styled.button`
     background-color: #ff6f61;
     color: #fff;
   }
+`;
+
+const CardCount = styled.div`
+  width: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  padding-top: 4px;
+  text-align: center;
 `;

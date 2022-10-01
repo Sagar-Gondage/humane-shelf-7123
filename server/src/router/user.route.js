@@ -50,7 +50,7 @@ UserRouter.post("/login", async (req, res) => {
       { mobile: mobile },
       { $set: { token: token } }
     );
-    console.log(user);
+    // console.log(user);
     if (user) {
       return res.status(200).send({
         message: "User logged in successfully",
@@ -94,30 +94,30 @@ UserRouter.get("/profile/:userId", async (req, res) => {
 });
 
 UserRouter.post("/cart/:id", async (req, res) => {
-  try{
-  const { id } = req.params;
-  const newItem = req.body;
-  
-  const user = await UserModel.updateOne(
-    { _id: id },
-    { $set: { cart: newItem } }
-  );
-  res.status(200).send("Item added to the cart successfully");
-  }catch(e){
-    res.status(401).send("something wrong")
+  try {
+    const { id } = req.params;
+    const newItem = req.body;
+
+    const user = await UserModel.updateOne(
+      { _id: id },
+      { $set: { cart: newItem } }
+    );
+    res.status(200).send("Item added to the cart successfully");
+  } catch (e) {
+    res.status(401).send("something wrong");
   }
 });
 
-UserRouter.get("/cart_empty/:id",async(req,res)=>{
+UserRouter.get("/cart_empty/:id", async (req, res) => {
   const { id } = req.params;
-  try{
+  try {
     const user = await UserModel.findOneAndUpdate(
       { _id: id },
       { $unset: { cart: [] } }
     );
-    res.status(200).send("cart empty")
-  }catch(e){
-   res.status(400).send(e)
+    res.status(200).send("cart empty");
+  } catch (e) {
+    res.status(400).send(e);
   }
-})
+});
 module.exports = UserRouter;

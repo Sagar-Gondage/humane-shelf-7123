@@ -11,9 +11,9 @@ ProductRouter.get("/", async (req, res) => {
 ProductRouter.get("/data/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const datas = await ProductModel.findById({ _id: id });
-
-    res.status(201).send({ data: datas, message: "request successfull" });
+    const data = await ProductModel.findById(id).exec();
+    console.log("datas", data);
+    res.status(201).send({ data: data, message: "request successfull" });
   } catch (error) {
     res.status(404).json(error);
   }
