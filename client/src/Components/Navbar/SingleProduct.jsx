@@ -92,6 +92,8 @@ const SingleProduct = ({ item, onClose, setQuery }) => {
     updateCartItem,
   } = useSelector((state) => state.cart);
 
+const c = useSelector((state)=>state.cart)
+console.log("c",c)
   const handleAddToCart = (item) => {
     const addData = {
       _productId: item._id,
@@ -132,14 +134,14 @@ const SingleProduct = ({ item, onClose, setQuery }) => {
   };
 
   //Below useEffect is used to fetch count of cart item
-  useEffect(() => {
-    const getCount = () => {
-      let ans = cartData.filter((data) => data._productId == item._id);
-      return ans[0] ? ans[0]?.count : 0;
-    };
+  // useEffect(() => {
+  //   const getCount = () => {
+  //     let ans = cartData.filter((data) => data._productId == item._id);
+  //     return ans[0] ? ans[0]?.count : 0;
+  //   };
 
-    setCountValue(Number(getCount()));
-  }, [item, cartData]);
+  //   setCountValue(Number(getCount()));
+  // }, [item, cartData]);
 
   return (
     <Box
@@ -242,14 +244,12 @@ const SingleProduct = ({ item, onClose, setQuery }) => {
                       key={item.id}
                       onClick={() => handleAddToCart(item)}
                     >
-                      {addCartItem.loading && addCartItem._id === item._id ? (
-                        <Spinner speed="0.65s" size="xs" />
-                      ) : (
+                     
                         <Flex>
                           <CartPlusIcon className="fa-solid fa-cart-plus"></CartPlusIcon>
                           ADD
                         </Flex>
-                      )}
+                      
                     </AddToCartBtn>
                   ) : (
                     <Flex>
@@ -270,14 +270,14 @@ const SingleProduct = ({ item, onClose, setQuery }) => {
                         fontWeight={400}
                         fontSize="12px"
                       >
-                        {updateCartItem?.loading &&
+                        {/* {updateCartItem?.loading &&
                         updateCartItem?._id == item?._id ? (
                           <CardCount>
                             <Spinner speed="0.65s" size="xs" />
                           </CardCount>
                         ) : (
                           <CardCount>{countValue}</CardCount>
-                        )}
+                        )} */}
                       </Tooltip>
 
                       <CartInc
