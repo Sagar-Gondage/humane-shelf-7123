@@ -1,17 +1,19 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const RequiredAuth = ({ children }) => {
-  const location = useLocation();
-  const { isAuth } = useSelector((store) => store.auth);
-  console.log("required auth");
-  const form = {
-    pathname: location.pathname,
-  };
-
-  if (isAuth) return children;
-  return <Navigate to={"/login"} state={form} replace />;
+  const navigate=useNavigate()
+  const { require} = useSelector((store) => store.auth);
+ 
+ const isAuth= localStorage.getItem("isAuth")||false;
+ if(!isAuth){
+  require.setMethod(true);
+  require.onOpenAuth();
+  navigate("/cart")
+ }else{
+  return children
+ }
 };
 
 export default RequiredAuth;

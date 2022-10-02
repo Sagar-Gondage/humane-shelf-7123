@@ -1,5 +1,6 @@
 import { Box, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ProductsCard from "../Homepage/Reusesable/ProductsCard";
 import About from "./Reuseable/About";
@@ -15,9 +16,18 @@ const Cartpage = () => {
   // console.log(getTotal, "totoal");
   const navigate = useNavigate();
   const [trigger, settrigger] = useState(false);
-
+  
+  const isAuth= localStorage.getItem("isAuth")||false;
+  const { require} = useSelector((store) => store.auth);
   const handleNavigate = () => {
-    navigate("/cart/address-page");
+    if(isAuth){
+      navigate("/cart/address-page");
+    }else{
+      require.setMethod(true);
+     require.onOpenAuth();
+  
+    }
+    
   };
   console.log(trigger);
   return (
@@ -32,8 +42,9 @@ const Cartpage = () => {
         {/* this one will have cart items and products  */}
         <Box w={{ lg: "60%", md: "100%", sm: "100%" }}>
           {data.length > 0 &&
-            data.map((e) => (
+            data.map((e,i) => (
               <ItemsCard
+                key={i}
                 productsData={e}
                 settrigger={settrigger}
                 price={e.price}
