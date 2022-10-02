@@ -13,7 +13,7 @@ const mongodb_url =
   process.env.MONGO_URL || "mongodb://localhost:27017/tata1mg";
 const PORT = process.env.PORT;
 
-const cors = require("cors");
+
 
 app.use(cors());
 
