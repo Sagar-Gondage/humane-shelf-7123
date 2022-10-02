@@ -13,11 +13,11 @@ Checkout our application here ✌ - [TATA 1mg.com Clone](https://onemgpro.vercel
 
 [![Tools](https://skillicons.dev/icons?i=html,css,javascript,redux,react,firebase,tailwind,github,vercel,heroku&theme=dark)](https://skillicons.dev)
 
-## Deployment
+## 🚀 Deployment
 
 Checkout our application here ✌ - [1mg Clone](https://onemgpro.vercel.app/)
 
-## Contributors
+##  🥷🏽  Contributors
 
 - [@JaiminSheladiya](https://github.com/JaiminSheladiya)
 - [@Sagar-Gondage](https://github.com/Sagar-Gondage) 
