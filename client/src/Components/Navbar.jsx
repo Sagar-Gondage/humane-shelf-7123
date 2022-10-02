@@ -60,7 +60,7 @@ const navdata = [
 export default function Navbar() {
   const dispatch = useDispatch();
   const { require, isAuth } = useSelector((store) => store.auth);
-  console.log(require);
+  // console.log(require);
   const { isOpen, onToggle } = useDisclosure();
   const navigate = useNavigate();
   const {
@@ -70,7 +70,7 @@ export default function Navbar() {
   } = useSelector((state) => state.cart);
   const data = useSelector((state) => state.cart);
 
-  console.log("cartData", data);
+  // console.log("cartData", data);
   const { height, width } = useWindowDimensions();
   return (
     <Box

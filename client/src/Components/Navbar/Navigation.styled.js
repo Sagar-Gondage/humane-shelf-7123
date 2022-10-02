@@ -112,11 +112,9 @@ export const NavWrapper = styled.nav`
     border-bottom: 1.5px solid var(--border);
     box-sizing: border-box;
     width: 100%;
-    /* border: 1px solid black; */
     padding: 6px 0;
     display: flex;
     & > div {
-      /* border: 1px solid red; */
     }
 
     //First part
@@ -128,7 +126,6 @@ export const NavWrapper = styled.nav`
       //Con
       .container {
         width: 90%;
-        /* border: 1px solid black; */
         height: 100%;
         display: flex;
         align-items: center;
@@ -142,7 +139,6 @@ export const NavWrapper = styled.nav`
           background-color: #f1f4f6;
 
           span {
-            /* border: 1px solid black; */
             height: 100%;
             display: flex;
             width: 20px;
@@ -193,7 +189,6 @@ export const NavWrapper = styled.nav`
           }
           span {
             width: 20px;
-            /* border: 1px solid black; */
             height: 100%;
             color: #666666;
             display: flex;
@@ -230,7 +225,6 @@ export const NavWrapper = styled.nav`
           font-size: 14px;
         }
         span {
-          /* border: 1px solid black; */
           height: 100%;
           width: 15px;
           display: flex;
@@ -281,7 +275,6 @@ export const NavWrapper = styled.nav`
           }
         }
         span {
-          /* border: 1px solid black; */
           height: 100%;
           padding: 0 2px;
           display: flex;
@@ -297,7 +290,6 @@ export const NavWrapper = styled.nav`
           top: 100%;
 
           height: auto;
-          /* border: 1px solid black; */
           background-color: #ffffff;
           width: auto;
           display: flex;
@@ -354,7 +346,6 @@ export const NavWrapper = styled.nav`
           top: 100%;
           right: 0;
           height: auto;
-          /* border: 1px solid black; */
           background-color: #ffffff;
           width: auto;
           display: flex;

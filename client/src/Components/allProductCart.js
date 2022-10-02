@@ -19,15 +19,11 @@ import { GrSubtractCircle } from "react-icons/gr";
 import { IoIosAddCircle } from "react-icons/io";
 
 const AllProduct = ({ product }) => {
-  // const [productCountState, setProductCountState] = useState(0);
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
-  // console.log("cartItems", cartItems);
   const itemIdsFromCart = cartItems.map((el) => el._id);
   const itemIdandCount = cartItems.map((el) => [el._id, el.count]);
   let cartProduct = cartItems.find((el) => el._id == product._id);
-  // console.log("count", cartProduct);
-  // console.log(itemIdsFromCart);
 
   const handleAddToCart = (newProduct) => {
     newProduct.productCount = 1;
@@ -36,9 +32,6 @@ const AllProduct = ({ product }) => {
   };
 
   const handleIncreaseCartProudct = (newProduct) => {
-    // console.log("cartItems", cartItems);
-    console.log("newProduct", newProduct);
-
     cartItems.find((el) => el._id == newProduct._id).productCount =
       newProduct.productCount + 1;
 
@@ -48,7 +41,6 @@ const AllProduct = ({ product }) => {
   const handleDecreaseCartProudct = (newProduct) => {
     if (newProduct.productCount == 1) {
       let newCart = cartItems.filter((el) => el._id != newProduct._id);
-      // console.log("newCart", newCart);
       dispatch(updateCartCount(newCart));
     } else {
       cartItems.find((el) => el._id == newProduct._id).productCount =
@@ -63,7 +55,6 @@ const AllProduct = ({ product }) => {
       border={"1px solid #eee"}
       transition={".3s"}
       rounded={4}
-      // height="340px"
       bg={"white"}
       _hover={{
         transition: ".6s",
@@ -73,7 +64,7 @@ const AllProduct = ({ product }) => {
       p={"10px"}
     >
       <Box
-        width="200px"
+        width="100%"
         margin="auto"
         p={"20px 20px"}
         bg={"white"}
@@ -156,9 +147,8 @@ const AllProduct = ({ product }) => {
           lineHeight="17px"
           color={"#757575"}
         >
-          MRP{" "}
+          MRP
           <Text as={"span"} textDecoration={"line-through"}>
-            {" "}
             {product.strikedPrice}
           </Text>
         </Text>

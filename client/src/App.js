@@ -14,7 +14,7 @@ import PaymentPage from "./Pages/PaymentPage/PaymentPage";
 import SingleProductPage from "./Pages/products/SingleProductPage";
 function App() {
   return (
-    <Container maxW={"none"} p={0}>
+    <Container maxW={"100%"} p={0}>
       <nav>
         <Navbar />
       </nav>

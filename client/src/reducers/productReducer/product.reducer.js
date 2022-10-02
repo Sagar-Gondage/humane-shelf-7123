@@ -13,7 +13,6 @@ export const productListReducer = (
   state = { products: [], filteredProducts: [] },
   action
 ) => {
-  // console.log("Payload", action.ayload);
   switch (action.type) {
     case GET_ALL_PRODUCT_REQUEST: {
       return { ...state, loading: true };
@@ -30,13 +29,11 @@ export const productListReducer = (
       return { ...state, loading: false, error: action.payload };
     }
     case GET_FILTERED_PROUDCT_SUCCESS: {
-      return { ...state, loading: false, filteredProducts: action.payload };
+      return { ...state, filteredProducts: action.payload };
     }
     case GET_DISCOUNT_PRODUCT_SUCCESS: {
-      // console.log("success");
       return {
         ...state,
-        loading: false,
         filteredProducts: action.payload,
         products: action.payload,
       };
