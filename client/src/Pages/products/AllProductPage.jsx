@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Flex,
   Grid,
   Select,
@@ -15,6 +16,7 @@ import {
   filterByBrandAPI,
   getAllProductsAPI,
   getDiscountProductAPI,
+  sortItems,
 } from "../../actions/product.actions";
 import {
   AllBrands,
@@ -28,6 +30,7 @@ const AllProductPage = () => {
   const { loading, success, products, filteredProducts } = productList;
   // console.log("productLIst", productList);
   // console.log("products", products);
+  // console.log("filteredProducts", filteredProducts);
   const [arr, setArr] = useState([]);
   const [filteredProductList, setFilteredProductList] = useState([]);
   const dispatch = useDispatch();
@@ -43,16 +46,22 @@ const AllProductPage = () => {
   }, []);
 
   const filterByBrand = () => {
-    // console.log("arr", arr);
+    console.log("arr", arr);
     let newProductArr = [];
-    for (let i = 0; i < filteredProducts.length; i++) {
-      for (let j = 0; j < arr.length; j++) {
-        if (filteredProducts[i]["brand"] == arr[j]) {
-          newProductArr.push(filteredProducts[i]);
+    if (arr.length) {
+      for (let i = 0; i < products.length; i++) {
+        for (let j = 0; j < arr.length; j++) {
+          if (products[i]["brand"] == arr[j]) {
+            newProductArr.push(products[i]);
+          }
         }
       }
+      dispatch(filterByBrandAPI(newProductArr));
+    } else {
+      dispatch(filterByBrandAPI(products));
     }
-    setFilteredProductList(newProductArr);
+
+    // setFilteredProductList(newProductArr);
     // dispatch({ type: GET_FILTERED_PROUDCT_SUCCESS, payload: newProductArr });
     // console.log("newFiilter", newProductArr);
   };
@@ -81,7 +90,10 @@ const AllProductPage = () => {
     dispatch(getDiscountProductAPI(Number(e.target.value)));
   };
 
-  const handleSort = () => {};
+  const handleSort = (e) => {
+    // console.log(e.target.value);
+    dispatch(sortItems(e.target.value));
+  };
 
   const decrpage = () => {};
 
@@ -188,6 +200,7 @@ const AllProductPage = () => {
                   );
                 })}
               </div>
+              <Button ml={"20%"}>Reset</Button>
             </div>
           </div>
         </Box>
