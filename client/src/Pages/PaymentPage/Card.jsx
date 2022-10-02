@@ -9,8 +9,13 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Card = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/success");
+  };
   return (
     <Box p="2rem">
       <Text fontWeight={"500"} fontSize="20px">
@@ -64,6 +69,7 @@ const Card = () => {
         <br />
         <Box display={"flex"} justifyContent="right">
           <Button
+            onClick={handleClick}
             h="3rem"
             bg="#ff6f61"
             _hover={{ bg: "#ff6f61" }}

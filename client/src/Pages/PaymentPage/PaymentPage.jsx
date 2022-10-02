@@ -12,7 +12,7 @@ const PaymentPage = () => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate("/");
+    navigate("/success");
   };
 
   return (
