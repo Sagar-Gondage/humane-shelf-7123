@@ -18,9 +18,7 @@ import {
   getDiscountProductAPI,
   sortItems,
 } from "../../actions/product.actions";
-import {
-  AllBrands,
-} from "../../constants/function.constants.js/function.constants";
+import { AllBrands } from "../../constants/function.constants.js/function.constants";
 import AllProduct from "../../Components/allProductCart";
 import { GET_FILTERED_PROUDCT_SUCCESS } from "../../constants/reducer.constants.js/product.constants";
 
@@ -199,7 +197,7 @@ const AllProductPage = () => {
                   );
                 })}
               </div>
-              <Button ml={"20%"}>Reset</Button>
+              <Button ml={"20%"}>Reset all Filters</Button>
             </div>
           </div>
         </Box>

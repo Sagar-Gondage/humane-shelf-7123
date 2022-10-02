@@ -14,14 +14,14 @@ import PaymentPage from "./Pages/PaymentPage/PaymentPage";
 import SingleProductPage from "./Pages/products/SingleProductPage";
 function App() {
   return (
-    <Container className='App'  maxW={"none"} p={0}>
+    <Container className="App" maxW={"none"} p={0}>
       <nav>
-      <Navbar />
+        <Navbar />
       </nav>
       <Auth />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/allProducts" element={<AllProductPage />} />
+        <Route path="/products" element={<AllProductPage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/cart" element={<Cartpage />} />
         <Route path="/cart/address-page" element={<AdressPage />} />

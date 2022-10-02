@@ -208,6 +208,17 @@ const AllProduct = ({ product }) => {
             ) : (
               <Flex>
                 <Button
+                  // disabled={cartProduct.productCount === 1}
+                  bg={"white"}
+                  _hover={{ bg: "white" }}
+                  borderRadius="90%"
+                  onClick={() => handleDecreaseCartProudct(cartProduct)}
+                >
+                  <GrSubtractCircle fontSize="1.5rem" cursor={"pointer"} />
+                </Button>
+                <Text>{cartProduct.productCount}</Text>
+
+                <Button
                   disabled={cartProduct.productCount === 5}
                   bg={"white"}
                   _hover={{ bg: "white" }}
@@ -219,16 +230,6 @@ const AllProduct = ({ product }) => {
                     color="#ff6f61"
                     cursor={"pointer"}
                   />
-                </Button>
-                <Text>{cartProduct.productCount}</Text>
-                <Button
-                  disabled={cartProduct.productCount === 1}
-                  bg={"white"}
-                  _hover={{ bg: "white" }}
-                  borderRadius="90%"
-                  onClick={() => handleDecreaseCartProudct(cartProduct)}
-                >
-                  <GrSubtractCircle fontSize="1.5rem" cursor={"pointer"} />
                 </Button>
               </Flex>
             )}
