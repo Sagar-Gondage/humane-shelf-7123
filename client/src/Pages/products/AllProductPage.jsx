@@ -60,10 +60,6 @@ const AllProductPage = () => {
     } else {
       dispatch(filterByBrandAPI(products));
     }
-
-    // setFilteredProductList(newProductArr);
-    // dispatch({ type: GET_FILTERED_PROUDCT_SUCCESS, payload: newProductArr });
-    // console.log("newFiilter", newProductArr);
   };
 
   useEffect(() => {
