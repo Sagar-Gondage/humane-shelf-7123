@@ -97,11 +97,9 @@ const Stage1 = ({
     const { value } = e.target;
     setUserNumber(value);
     setUserDetails({ ...userDetails, ["mobile"]: value });
-    // console.log("user is typing", userDetails);
   };
   const handleSendOtp = (e) => {
     e.preventDefault();
-    console.log(userDetails.mobile)
     if (userDetails.mobile.length < 10) {
       setInvalid(true);
     } else {

@@ -83,7 +83,6 @@ const SearchBox = () => {
   const handleOnChangeOpen = (e) => {
     const { name, value } = e.target;
     setQuery(value);
-    // console.log("query", value);
 
     if (value.length >= 3) {
       onOpen();
@@ -94,11 +93,9 @@ const SearchBox = () => {
   };
   const id = useRef(null);
   const debounce = (e, fetchResult, delay) => {
-    // console.log("value", e.target.value);
 
     const { name, value } = e.target;
     setQuery(value);
-    // console.log("query", value);
 
     if (value.length < 3) {
       onClose();
@@ -117,13 +114,11 @@ const SearchBox = () => {
     axios
       .get(`http://localhost:8080/products/search?q=${query}`)
       .then((r) => {
-        console.log("fetch Result", r.data);
         
         setSearchData(r.data);
       })
       .catch((e) => console.log("error", e.data));
   };
-  //   console.log(searchData);
 
   useEffect(() => {
     if (!isOpen) {

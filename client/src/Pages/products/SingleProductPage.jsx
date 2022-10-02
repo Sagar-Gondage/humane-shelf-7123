@@ -302,7 +302,7 @@ const SingleProductPage = () => {
               onClick={() => handleAddToCart(singleProduct)}
               bottom={"20"}
               position={"absolute"}
-              w={"25%"}
+              w={"18%"}
               background={"#ff6f61"}
               color={"white"}
               _hover={{ backgroundColor: "#fa5344" }}

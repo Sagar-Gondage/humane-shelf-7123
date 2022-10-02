@@ -79,7 +79,6 @@ const Stage1 = ({
     }
     const { value } = e.target;
     setUserNumber(value);
-    // console.log("user is typing", value);
   };
   const handleSendOtp = (e) => {
     e.preventDefault();
@@ -116,7 +115,6 @@ const Stage1 = ({
       {
         size: "invisible",
         callback: (response) => {
-          // reCAPTCHA solved, allow signInWithPhoneNumber.
           onSignInSubmit();
         },
       },
@@ -124,14 +122,12 @@ const Stage1 = ({
     );
   };
   const onSignInSubmit = (e) => {
-    // e.preventDefault();
-    // setupRecaptcha();
+    
     const phoneNumber = `+91${userNumber}`;
     const appVerifier = window.recaptchaVerifier;
     signInWithPhoneNumber(auth, phoneNumber, appVerifier)
       .then((confirmationResult) => {
-        // SMS sent. Prompt user to type the code from the message, then sign the
-        // user in with confirmationResult.confirm(code).
+        
         window.confirmationResult = confirmationResult;
         // ...
         setResult(confirmationResult);
@@ -142,7 +138,7 @@ const Stage1 = ({
         // ...
         setInvalid(true);
         setLoading(false);
-        console.log("error11", error);
+       
       });
   };
   useEffect(() => {
@@ -264,13 +260,7 @@ const Stage2 = ({ userNumber, setStage, result, setSuccessful }) => {
   const [invalid, setInvalid] = useState(false);
   const [userOtp, setUserOtp] = useState("");
 
-  // const [count, setCount] = useState(30);
-
-  // useEffect(() => {
-  //   let timerId = setInterval(() => {
-  //     setCount((count) => count - 1);
-  //   }, 1000);
-  // }, []);
+  
   const toast = useToast();
   const handleOnchange = (value) => {
     if (invalid) {
@@ -366,19 +356,7 @@ const Stage2 = ({ userNumber, setStage, result, setSuccessful }) => {
                 Uh-oh! Incorrect OTP
               </Text>
 
-              {/* <Text fontSize={"13px"} mt="20px">
-                Resend in 0:30
-              </Text>
-              <Text
-                mt="20px"
-                color="#ff6f61"
-                fontWeight={"bold"}
-                cursor="pointer"
-                display={invalid ? "visible" : "none"}
-                // onClick={() => ResendOtp(1000)}
-              >
-                Resend OTP
-              </Text> */}
+            
             </Box>
           </Box>
           <Box>

@@ -60,7 +60,6 @@ const navdata = [
 export default function Navbar() {
   const dispatch = useDispatch();
   const { require, isAuth } = useSelector((store) => store.auth);
-  // console.log(require);
   const { isOpen, onToggle } = useDisclosure();
   const navigate = useNavigate();
   const {
@@ -70,7 +69,6 @@ export default function Navbar() {
   } = useSelector((state) => state.cart);
   const data = useSelector((state) => state.cart);
 
-  // console.log("cartData", data);
   const { height, width } = useWindowDimensions();
   return (
     <Box
@@ -318,19 +316,7 @@ export default function Navbar() {
               />
             </InputGroup>
 
-            {/* <InputGroup flex={5}>
-                <Input
-                  type="text"
-                  bg={"#f1f3f9"}
-                  _placeholder={{ opacity: 1, color: "grey", fontSize: "sm" }}
-                  focusBorderColor="none"
-                  placeholder="Search for Medicines and Health Products"
-                />
-                <InputRightElement
-                  pointerEvents="none"
-                  children={<FiSearch color="gray.800" />}
-                />
-              </InputGroup> */}
+          
             <Box flex={5}>
               <SearchBox />
             </Box>
@@ -366,16 +352,7 @@ export default function Navbar() {
       ) : (
         <></>
       )}
-      {/* ************************************************ */}
-
-      {/* <Stack direction={['column', 'row']} spacing='24px'>
-          {navdata.map((el)=>(
-           <Box as={Button}  rightIcon={<ChevronDownIcon />}>
-          {el}
-         </Box>
-          ))}
       
-  </Stack> */}
     </Box>
   );
 }
@@ -422,7 +399,7 @@ const DesktopNav = () => {
             </Popover>
           </Box>
         ))}
-        // Button from facebook.com
+      
         <Flex alignItems={"center"}>
           <Box
             as="button"
