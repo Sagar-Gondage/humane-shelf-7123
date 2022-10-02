@@ -216,7 +216,7 @@ const AllProduct = ({ product }) => {
                 >
                   <GrSubtractCircle fontSize="1.5rem" cursor={"pointer"} />
                 </Button>
-                <Text>{cartProduct.productCount}</Text>
+                <Text mt={"10px"}>{cartProduct.productCount}</Text>
 
                 <Button
                   disabled={cartProduct.productCount === 5}
