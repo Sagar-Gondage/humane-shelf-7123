@@ -20,7 +20,10 @@ import {
 } from "../../actions/product.actions";
 import { AllBrands } from "../../constants/function.constants.js/function.constants";
 import AllProduct from "../../Components/allProductCart";
-import { GET_FILTERED_PROUDCT_SUCCESS } from "../../constants/reducer.constants.js/product.constants";
+import {
+  GET_ALL_PRODUCT_SUCCESS,
+  GET_FILTERED_PROUDCT_SUCCESS,
+} from "../../constants/reducer.constants.js/product.constants";
 
 const AllProductPage = () => {
   const { productList } = useSelector((state) => state);
@@ -57,10 +60,6 @@ const AllProductPage = () => {
     } else {
       dispatch(filterByBrandAPI(products));
     }
-
-    // setFilteredProductList(newProductArr);
-    // dispatch({ type: GET_FILTERED_PROUDCT_SUCCESS, payload: newProductArr });
-    // console.log("newFiilter", newProductArr);
   };
 
   useEffect(() => {
@@ -84,7 +83,7 @@ const AllProductPage = () => {
 
   const onDicountFilterHanlde = (e) => {
     // console.log(e.target.checked, e.target.value);
-    dispatch(getDiscountProductAPI(Number(e.target.value)));
+    dispatch(getDiscountProductAPI(Number(e.target.value - 1)));
   };
 
   const handleSort = (e) => {
@@ -94,6 +93,9 @@ const AllProductPage = () => {
 
   const handleResetFilters = (e) => {
     console.log("Reset");
+    // console.log("products", products);
+    dispatch(getDiscountProductAPI(0));
+    // dispatch({ type: GET_ALL_PRODUCT_SUCCESS, payload: products });
   };
 
   const decrpage = () => {};
@@ -201,8 +203,8 @@ const AllProductPage = () => {
                   );
                 })}
               </div>
-              <Button onClick={() => handleResetFilters()} ml={"20%"}>
-                Reset all Filters
+              <Button onClick={() => handleResetFilters()}>
+                Reset Filters
               </Button>
             </div>
           </div>
