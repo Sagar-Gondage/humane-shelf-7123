@@ -12,8 +12,12 @@ import Cartpage from "./Pages/CartPage/Cartpage";
 import AdressPage from "./Pages/AddressPage/AdressPage";
 import PaymentPage from "./Pages/PaymentPage/PaymentPage";
 import SingleProductPage from "./Pages/products/SingleProductPage";
+
 import RequiredAuth from "./hoc/RequiredAuth";
-import Login from "./Components/Navbar/Login";
+
+
+import PaymentSucessfull from "./Pages/PaymentPage/PaymentSucessfull";
+
 function App() {
   return (
     <Container maxW={"100%"} p={0}>
@@ -30,6 +34,8 @@ function App() {
         <Route path="/cart/address-page" element={<RequiredAuth><AdressPage /></RequiredAuth>} />
         <Route path="/cart/payment/all/card" element={<RequiredAuth><PaymentPage /></RequiredAuth>} />
         <Route path="/product/:id" element={<SingleProductPage />} />
+
+        <Route path="/success" element={<PaymentSucessfull />} />
       </Routes>
       <Footer />
     </Container>
