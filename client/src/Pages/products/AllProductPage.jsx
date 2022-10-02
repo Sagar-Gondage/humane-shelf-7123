@@ -92,6 +92,10 @@ const AllProductPage = () => {
     dispatch(sortItems(e.target.value));
   };
 
+  const handleResetFilters = (e) => {
+    console.log("Reset");
+  };
+
   const decrpage = () => {};
 
   const incrpage = () => {};
@@ -197,7 +201,9 @@ const AllProductPage = () => {
                   );
                 })}
               </div>
-              <Button ml={"20%"}>Reset all Filters</Button>
+              <Button onClick={() => handleResetFilters()} ml={"20%"}>
+                Reset all Filters
+              </Button>
             </div>
           </div>
         </Box>
