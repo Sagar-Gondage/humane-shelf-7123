@@ -21,7 +21,7 @@ function App() {
       <Auth />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/allProducts" element={<AllProductPage />} />
+        <Route path="/products" element={<AllProductPage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/cart" element={<Cartpage />} />
         <Route path="/cart/address-page" element={<AdressPage />} />

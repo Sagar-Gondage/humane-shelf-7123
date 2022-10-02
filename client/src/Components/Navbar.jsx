@@ -63,7 +63,7 @@ import {
   console.log(require);
     const { isOpen, onToggle } = useDisclosure();
     const navigate = useNavigate();
-    const { data: cartData, getCartItems } = useSelector((state) => state.cart);
+    const { cartItems: cartData, getCartItems } = useSelector((state) => state.cart);
     const { height, width } = useWindowDimensions();
     return (
       <Box
