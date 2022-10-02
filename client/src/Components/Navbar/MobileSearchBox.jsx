@@ -113,9 +113,9 @@ const MobileSearchBox = () => {
   };
   const fetchResult = (query) => {
     axios
-      .get(`/products/search?q=${query}`)
+      .get(`http://localhost:8080/products/search?q=${query}`)
       .then((r) => {
-        // console.log("fetch Result", r.data);
+        console.log("fetch Result", r.data);
 
         setSearchData(r.data);
       })

@@ -113,11 +113,12 @@ const SearchBox = () => {
     }
   };
   const fetchResult = (query) => {
+    console.log(query)
     axios
-      .get(`/products/search?q=${query}`)
+      .get(`http://localhost:8080/products/search?q=${query}`)
       .then((r) => {
-        // console.log("fetch Result", r.data);
-
+        console.log("fetch Result", r.data);
+        
         setSearchData(r.data);
       })
       .catch((e) => console.log("error", e.data));
