@@ -9,6 +9,7 @@ import {
   GET_SINGLE_PRODUCT_SUCCESS,
 } from "../constants/reducer.constants.js/product.constants";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 export const getAllProductsAPI = () => async (dispatch) => {
   // console.log("in all proudct route");
@@ -26,20 +27,22 @@ export const getAllProductsAPI = () => async (dispatch) => {
 };
 
 export const filterByBrandAPI = (payload) => async (dispatch) => {
+  console.log(payload);
   dispatch({ type: GET_ALL_PRODUCT_REQUEST });
-  // console.log(payload);
-  try {
-    const { data } = await axios.get(
-      `http://localhost:8080/products/filter?brand=${payload}`
-    );
-    // console.log(data.data);
-    dispatch({ type: GET_FILTERED_PROUDCT_SUCCESS, payload: data.data });
-  } catch (error) {
-    dispatch({
-      type: GET_ALL_PRODUCT_FAIL,
-      payload: "Failed To Fetch the data",
-    });
-  }
+
+  dispatch({ type: GET_FILTERED_PROUDCT_SUCCESS, payload: payload });
+  // try {
+  //   const { data } = await axios.get(
+  //     `http://localhost:8080/products/filter?brand=${payload}`
+  //   );
+  //   // console.log(data.data);
+  //   dispatch({ type: GET_FILTERED_PROUDCT_SUCCESS, payload: data.data });
+  // } catch (error) {
+  //   dispatch({
+  //     type: GET_ALL_PRODUCT_FAIL,
+  //     payload: "Failed To Fetch the data",
+  //   });
+  // }
 };
 
 export const getDiscountProductAPI = (payload) => async (dispatch) => {
@@ -72,4 +75,23 @@ export const getSingleProductAPI = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({ type: GET_SINGLE_PRODUCT_FAIL, payload: error });
   }
+};
+
+//// sorting
+export const sortItems = (value) => async (dispatch, getState) => {
+  const { productList } = getState((state) => state.productList);
+  const { filteredProducts } = productList;
+  console.log("productList", filteredProducts);
+  console.log("value", value);
+  let newProducts = filteredProducts;
+  if (value === "plth") {
+    newProducts = filteredProducts.sort((a, b) => a.price - b.price);
+  } else if (value === "phtl") {
+    newProducts = filteredProducts.sort((a, b) => b.price - a.price);
+  } else if (value === "rlth") {
+    newProducts = filteredProducts.sort((a, b) => a.ratings - b.ratings);
+  } else if (value === "rhtl") {
+    newProducts = filteredProducts.sort((a, b) => b.ratings - a.ratings);
+  }
+  dispatch({ type: GET_FILTERED_PROUDCT_SUCCESS, payload: newProducts });
 };
