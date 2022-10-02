@@ -12,11 +12,11 @@ import axios from "axios";
 
 export const getAllProductsAPI = () => async (dispatch) => {
   dispatch({ type: GET_ALL_PRODUCT_REQUEST });
-  console.log("request");
+ 
   try {
     const { data } = await axios.get("http://localhost:8080/products");
     dispatch({ type: GET_ALL_PRODUCT_SUCCESS, payload: data.data });
-    console.log("success");
+  
   } catch (error) {
     dispatch({
       type: GET_ALL_PRODUCT_FAIL,
@@ -60,8 +60,7 @@ export const getSingleProductAPI = (id) => async (dispatch) => {
 export const sortItems = (value) => async (dispatch, getState) => {
   const { productList } = getState((state) => state.productList);
   const { filteredProducts } = productList;
-  console.log("productList", filteredProducts);
-  console.log("value", value);
+ 
   let newProducts = filteredProducts;
   if (value === "plth") {
     newProducts = filteredProducts.sort((a, b) => a.price - b.price);

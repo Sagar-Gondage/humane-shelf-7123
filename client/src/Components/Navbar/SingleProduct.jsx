@@ -151,7 +151,7 @@ console.log("c",c)
     >
       <Flex justifyContent={"space-between"} alignItems={"center"} gap={3}>
         <Link
-          to={`/products/${item._id}`}
+          to={`/product/${item._id}`}
           style={{ textDecoration: "none" }}
           onClick={() => {
             onClose();

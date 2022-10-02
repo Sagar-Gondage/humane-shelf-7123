@@ -85,7 +85,6 @@ const MobileSearchBox = () => {
   const handleOnChangeOpen = (e) => {
     const { name, value } = e.target;
     setQuery(value);
-    // console.log("query", value);
 
     if (value.length >= 3) {
       onOpen();
@@ -96,11 +95,9 @@ const MobileSearchBox = () => {
   };
   const id = useRef(null);
   const debounce = (e, fetchResult, delay) => {
-    // console.log("value", e.target.value);
 
     const { name, value } = e.target;
     setQuery(value);
-    // console.log("query", value);
 
     if (value.length >= 3) {
       if (id.current) {
@@ -121,7 +118,6 @@ const MobileSearchBox = () => {
       })
       .catch((e) => console.log("error", e.data));
   };
-  //   console.log(searchData);
 
   useEffect(() => {
     if (!isOpen) {
@@ -136,21 +132,7 @@ const MobileSearchBox = () => {
   return (
     <div>
       <InputGroup flex={5}>
-        {/* <Input
-          type="search"
-          bg={"#f1f3f9"}
-          value={query}
-          _placeholder={{ opacity: 1, color: "grey", fontSize: "sm" }}
-          focusBorderColor="none"
-          placeholder="Search for Medicines and Health Products"
-          onChange={handleOnChangeOpen}
-        />
-        {query?.length == 0 && (
-          <InputRightElement
-            pointerEvents="none"
-            children={<FiSearch color="gray.800" />}
-          />
-        )} */}
+       
         <FiSearch fontSize={"20px"} color="gray.800" onClick={() => onOpen()} />
       </InputGroup>
       <Modal isOpen={isOpen} onClose={onClose} size={"full"}>
