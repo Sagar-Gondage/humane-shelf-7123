@@ -308,7 +308,7 @@ export default function Navbar() {
               <Input
                 type="text"
                 bg={"#f1f3f9"}
-                placeholder="Gaya"
+                placeholder="Your City"
                 _placeholder={{ opacity: 1, color: "black" }}
                 focusBorderColor="none"
               />

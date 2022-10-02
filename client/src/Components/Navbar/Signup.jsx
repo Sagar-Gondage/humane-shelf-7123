@@ -66,6 +66,7 @@ const Signup = ({ setMethod, initialRef, finalRef, setSuccessful }) => {
             setSuccessful={setSuccessful}
           />
         )}
+        
       </Box>
     </>
   );
@@ -449,7 +450,7 @@ const Stage3 = ({ setSuccessful, userDetails, setUserDetails }) => {
   // console.log(signUpData);
 
   return (
-    <Box>
+    <Box width='250px'>
       <form onSubmit={handleSubmit}>
         <Flex
           flexDirection={"column"}
@@ -462,7 +463,7 @@ const Stage3 = ({ setSuccessful, userDetails, setUserDetails }) => {
                 Enter your personal details
               </Heading>
             </Box>
-            <Box m={"10px 0 60px"}>
+            <Box m={"10px 0 10px"}>
               <Text fontSize={"12px"} color={"#616161"}>
                 We are almost ready! Just need your extra details
               </Text>
