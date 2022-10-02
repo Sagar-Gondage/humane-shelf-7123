@@ -13,11 +13,36 @@ Checkout our application here ✌ - [TATA 1mg.com Clone](https://onemgpro.vercel
 
 [![Tools](https://skillicons.dev/icons?i=html,css,javascript,redux,react,firebase,tailwind,github,vercel,heroku&theme=dark)](https://skillicons.dev)
 
+<hr />
+
 ## 🚀 Deployment
 
 Checkout our application here ✌ - [1mg Clone](https://onemgpro.vercel.app/)
 
-##  🥷🏽  Contributors
+## 🔥 Features
+
+- Homepage - The landing Page
+- Login/Signup Page with mobile OTP
+- Jwt(tokens,refreshTokens)
+- JS-Cookies(storing tokens in cookies)
+- Product Page to browse all products based on categories
+- Sort products by prices and ratings
+- Filter products by brands and discounts
+- Pagination
+- Cart Page
+- Address Page
+- Order Summary Page
+- Payment Page
+
+
+## 🐾 Credits
+
+- Images : [1mg.com](https://www.1mg.com/)
+- Content : [1mg.com.com](https://www.1mg.com/)
+- Icons : [Font Awesome](https://fontawesome.com/)
+- References : [MDN Docs](https://developer.mozilla.org/en-US/) | [W3School](https://www.w3schools.com/)
+
+## 🥷🏽 Contributors
 
 - [@JaiminSheladiya](https://github.com/JaiminSheladiya)
 - [@Sagar-Gondage](https://github.com/Sagar-Gondage) 
