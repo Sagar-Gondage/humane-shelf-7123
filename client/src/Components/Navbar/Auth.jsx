@@ -107,7 +107,7 @@ import {
   
             <ModalBody padding={"10px"}>
               {!successful ? (
-                <Flex justifyContent='center' >
+                <Flex justifyContent='center'   >
                   <Swiper
                     style={{
                       maxHeight: "200px !important",
@@ -131,14 +131,14 @@ import {
                     
                   >
                     {data.map((item, index) => (
-                      <Box key={uuidv4()}  >
+                      <Box key={uuidv4()}>
                         <SwiperSlide
                           key={uuidv4()}
                           style={{ maxHeight: "170px" }}
                           className={"mySwiper-slider"}
                          
                         >
-                          <Box textAlign={"center"} >
+                          <Box textAlign={"center"}  >
                             <Flex justifyContent={"center"}>
                               <Image src={item.imgUrl} height="auto" />
                             </Flex>
