@@ -32,7 +32,7 @@ const BrandsCard = ({ something }) => {
         infinite={true}
         autoPlaySpeed={1000}
         keyBoardControl={true}
-        customTransition="all 2"
+        customTransition="300ms"
         transitionDuration={1000}
         containerClass="carousel-container"
         removeArrowOnDeviceType={["tablet", "mobile"]}
