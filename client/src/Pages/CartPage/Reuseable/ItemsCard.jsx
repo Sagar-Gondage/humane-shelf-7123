@@ -1,4 +1,4 @@
-import { Box, Button, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 import React from "react";
 import { BsTrash } from "react-icons/bs";
 import { IoIosAddCircle } from "react-icons/io";
@@ -21,8 +21,8 @@ const ItemsCard = ({ productsData, settrigger }) => {
       (newProduct.productCount * (newProduct.productCount - 1));
 
     newProduct.price += Math.round(res);
-    console.log("newProduct", newProduct.productCount);
-    console.log("price", newProduct.price);
+    // console.log("newProduct", newProduct.productCount);
+    // console.log("price", newProduct.price);
     dispatch(updateCartCount(cartItems));
     settrigger((prev) => !prev);
   };
@@ -47,6 +47,7 @@ const ItemsCard = ({ productsData, settrigger }) => {
   };
   return (
     <Box
+      key={productsData._id}
       bg="white"
       display={"flex"}
       justifyContent="space-between"
@@ -55,7 +56,10 @@ const ItemsCard = ({ productsData, settrigger }) => {
     >
       {/* 1 */}
       <Box>
-        <Text fontWeight={"600"}>{productsData.productName}</Text>
+        <Flex gap={1}>
+          <Image src={productsData.imageUrl} h="30px" w="30px" />
+          <Text fontWeight={"600"}>{productsData.productName}</Text>
+        </Flex>
         <br />
         <Text>{productsData.shortDesc}</Text>
         <br />
@@ -63,14 +67,14 @@ const ItemsCard = ({ productsData, settrigger }) => {
           onClick={() => handleRemovefromCart(cartProduct)}
           bg={"white"}
           _hover={{ bg: "white" }}
-          mt="1rem"
+          mt="0.2rem"
         >
           <BsTrash /> Remove
         </Button>
       </Box>
       {/* 2 */}
       <Box textAlign={"right"}>
-        <Text>rs {productsData.price}</Text>
+        <Text>₹ {productsData.price}</Text>
         <br />
         <Text>
           MRP{" "}
@@ -79,7 +83,7 @@ const ItemsCard = ({ productsData, settrigger }) => {
           </span>
         </Text>
         <br />
-        <Box display={"flex"} mt="1rem">
+        <Box display={"flex"} mt="0.2rem">
           <Button
             disabled={productsData.productCount === 1}
             onClick={() => handleDecreaseCartProudct(cartProduct)}

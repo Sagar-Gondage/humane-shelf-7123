@@ -2,7 +2,10 @@ import { Box, Button, Text } from "@chakra-ui/react";
 import React from "react";
 
 const TaxCard = ({ btn = "CHECKOUT", getTotal, handleNavigate }) => {
-  let price = getTotal - 40;
+  let price = 0;
+  if (getTotal !== 0) {
+    price = getTotal - 40;
+  }
   return (
     <Box
       bg="white"
