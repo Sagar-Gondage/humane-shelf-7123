@@ -18,9 +18,7 @@ import {
   getDiscountProductAPI,
   sortItems,
 } from "../../actions/product.actions";
-import {
-  AllBrands,
-} from "../../constants/function.constants.js/function.constants";
+import { AllBrands } from "../../constants/function.constants.js/function.constants";
 import AllProduct from "../../Components/allProductCart";
 import { GET_FILTERED_PROUDCT_SUCCESS } from "../../constants/reducer.constants.js/product.constants";
 
@@ -92,6 +90,10 @@ const AllProductPage = () => {
   const handleSort = (e) => {
     // console.log(e.target.value);
     dispatch(sortItems(e.target.value));
+  };
+
+  const handleResetFilters = (e) => {
+    console.log("Reset");
   };
 
   const decrpage = () => {};
@@ -199,7 +201,9 @@ const AllProductPage = () => {
                   );
                 })}
               </div>
-              <Button ml={"20%"}>Reset</Button>
+              <Button onClick={() => handleResetFilters()} ml={"20%"}>
+                Reset all Filters
+              </Button>
             </div>
           </div>
         </Box>
