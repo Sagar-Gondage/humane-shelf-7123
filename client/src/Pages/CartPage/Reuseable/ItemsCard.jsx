@@ -13,16 +13,14 @@ const ItemsCard = ({ productsData, settrigger }) => {
   let cartProduct = cartItems.find((el) => el._id === productsData._id);
 
   const handleIncreaseCartProudct = (newProduct) => {
-    // console.log("cartItems", cartItems);
-    // console.log("newProduct", newProduct.productCount);
+    
     newProduct.productCount = newProduct.productCount + 1;
     let res =
       (newProduct.price * newProduct.productCount) /
       (newProduct.productCount * (newProduct.productCount - 1));
 
     newProduct.price += Math.round(res);
-    // console.log("newProduct", newProduct.productCount);
-    // console.log("price", newProduct.price);
+    
     dispatch(updateCartCount(cartItems));
     settrigger((prev) => !prev);
   };

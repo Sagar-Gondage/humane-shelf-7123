@@ -109,7 +109,7 @@ const Stage1 = ({
         // sendOtp(2000);
         setLoading(true);
         axios
-          .post("http://localhost:8080/user/checkmobile", { mobile: userDetails.mobile })
+          .post("https://onemgmasa.herokuapp.com/user/checkmobile", { mobile: userDetails.mobile })
           .then((res) => {
             if (res.data.status == true) {
               setMessage(res.data.message);
@@ -303,9 +303,7 @@ const Stage2 = ({
         // User signed in successfully.
         const user = result.user;
         // ...
-        console.log("sign in successful", user.accessToken);
-        console.log('userDetails',userDetails)
-        console.log('token=>' , user.accessToken)
+        
 
         setUserDetails({ ...userDetails, ["token"]: user.accessToken });
         setStage(3);
@@ -382,19 +380,7 @@ const Stage2 = ({
                 Uh-oh! Incorrect OTP
               </Text>
 
-              {/* <Text fontSize={"13px"} mt="20px">
-                Resend in 0:30
-              </Text>
-              <Text
-                mt="20px"
-                color="#ff6f61"
-                fontWeight={"bold"}
-                cursor="pointer"
-                display={invalid ? "visible" : "none"}
-                // onClick={() => ResendOtp(1000)}
-              >
-                Resend OTP
-              </Text> */}
+             
             </Box>
           </Box>
           <Box>
@@ -429,7 +415,7 @@ const Stage3 = ({ setSuccessful, userDetails, setUserDetails }) => {
   const [loading, setLoading] = useState(false);
   const [invalid, setInvalid] = useState(false);
   const { isAuth, userData, signUpData } = useSelector((state) => state.auth);
-  console.log(isAuth, userData);
+ 
   const handleOnchange = (e) => {
     setInvalid(false);
     const { name, value } = e.target;

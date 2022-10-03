@@ -69,24 +69,24 @@ ProductRouter.get("/filter", async (req, res) => {
 });
 
 ProductRouter.get("/search", async (req, res) => {
-   console.log(req.query.q);
+  //  console.log(req.query.q);
   try {
-    // let result = await ProductModel.aggregate([
-    //   {
-    //     $search: {
-    //       autocomplete: {
-    //         query: `${req.query.q}`,
-    //         path: "productName",
-    //         fuzzy: {
-    //           maxEdits: 2,
-    //           prefixLength: 3,
-    //         },
-    //       },
-    //     },
-    //   },
-    // ]);
-   let result = await ProductModel.find({brand:"Tata 1mg"})
-   console.log(result)
+    let result = await ProductModel.aggregate([
+      {
+        $search: {
+          autocomplete: {
+            query: `${req.query.q}`,
+            path: "productName",
+            fuzzy: {
+              maxEdits: 2,
+              prefixLength: 3,
+            },
+          },
+        },
+      },
+    ]);
+  //  let result = await ProductModel.find({brand:"Tata 1mg"})
+  //  console.log(result)
     res.status(200).send(result);
   } catch (e) {
     res.status(500).send({ message: e.message });

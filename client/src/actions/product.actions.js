@@ -14,7 +14,7 @@ export const getAllProductsAPI = () => async (dispatch) => {
   dispatch({ type: GET_ALL_PRODUCT_REQUEST });
  
   try {
-    const { data } = await axios.get("http://localhost:8080/products");
+    const { data } = await axios.get("https://onemgmasa.herokuapp.com/products");
     dispatch({ type: GET_ALL_PRODUCT_SUCCESS, payload: data.data });
   
   } catch (error) {
@@ -32,7 +32,7 @@ export const filterByBrandAPI = (payload) => async (dispatch) => {
 export const getDiscountProductAPI = (payload) => async (dispatch) => {
   try {
     const { data } = await axios.get(
-      `http://localhost:8080/products/filter?discount=${payload}`
+      `https://onemgmasa.herokuapp.com/products/filter?discount=${payload}`
     );
     dispatch({ type: GET_DISCOUNT_PRODUCT_SUCCESS, payload: data.data });
   } catch (error) {
@@ -48,7 +48,7 @@ export const getSingleProductAPI = (id) => async (dispatch) => {
   dispatch({ type: GET_SINGLE_PRODUCT_REQUEST });
   try {
     const { data } = await axios.get(
-      `http://localhost:8080/products/data/${id}`
+      `https://onemgmasa.herokuapp.com/products/data/${id}`
     );
     dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: data.data });
   } catch (error) {

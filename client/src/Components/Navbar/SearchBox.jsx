@@ -110,9 +110,9 @@ const SearchBox = () => {
     }
   };
   const fetchResult = (query) => {
-    console.log(query)
+    
     axios
-      .get(`http://localhost:8080/products/search?q=${query}`)
+      .get(`https://onemgmasa.herokuapp.com/products/search?q=${query}`)
       .then((r) => {
         
         setSearchData(r.data);

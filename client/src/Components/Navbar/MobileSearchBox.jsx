@@ -110,9 +110,9 @@ const MobileSearchBox = () => {
   };
   const fetchResult = (query) => {
     axios
-      .get(`http://localhost:8080/products/search?q=${query}`)
+      .get(`https://onemgmasa.herokuapp.com/products/search?q=${query}`)
       .then((r) => {
-        console.log("fetch Result", r.data);
+       
 
         setSearchData(r.data);
       })
