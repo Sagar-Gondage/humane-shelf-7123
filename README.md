@@ -11,7 +11,7 @@ Checkout our application here ✌ - [TATA 1mg.com Clone](https://tata-1mg-clone-
 
 ## 🔧 Technologies & Tools
 
-[![Tools](https://skillicons.dev/icons?i=html,css,javascript,redux,react,firebase,tailwind,github,vercel,heroku&theme=dark)](https://skillicons.dev)
+[![Tools](https://skillicons.dev/icons?i=html,css,javascript,redux,react,mongodb,express,nodejs,firebase,tailwind,github,vercel,heroku&theme=dark)](https://skillicons.dev)
 
 <hr />
 
