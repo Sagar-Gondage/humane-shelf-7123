@@ -92,8 +92,8 @@ const SingleProduct = ({ item, onClose, setQuery }) => {
     updateCartItem,
   } = useSelector((state) => state.cart);
 
-const c = useSelector((state)=>state.cart)
-console.log("c",c)
+
+
   const handleAddToCart = (item) => {
     const addData = {
       _productId: item._id,
@@ -133,15 +133,7 @@ console.log("c",c)
     }
   };
 
-  //Below useEffect is used to fetch count of cart item
-  // useEffect(() => {
-  //   const getCount = () => {
-  //     let ans = cartData.filter((data) => data._productId == item._id);
-  //     return ans[0] ? ans[0]?.count : 0;
-  //   };
-
-  //   setCountValue(Number(getCount()));
-  // }, [item, cartData]);
+  
 
   return (
     <Box

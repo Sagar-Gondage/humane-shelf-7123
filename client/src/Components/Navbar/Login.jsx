@@ -92,7 +92,7 @@ const Stage1 = ({
         setLoading(true);
 
         axios
-          .post("http://localhost:8080/user/checkmobile", { mobile: userNumber })
+          .post("https://onemgmasa.herokuapp.com/user/checkmobile", { mobile: userNumber })
           .then((res) => {
             if (res.data.status != true) {
               setMessage(res.data.message);
@@ -278,7 +278,7 @@ const Stage2 = ({ userNumber, setStage, result, setSuccessful }) => {
         // User signed in successfully.
         const user = result.user;
         // ...
-        console.log("sign in successful", user);
+       
         dispatch(userLoginAPI({ mobile: userNumber, token: user.accessToken }));
         setTimeout(() => {
           setSuccessful(true);
@@ -288,7 +288,7 @@ const Stage2 = ({ userNumber, setStage, result, setSuccessful }) => {
         // User couldn't sign in (bad verification code?)
         // ...
         setInvalid(true);
-        console.log("sign in error", error);
+        
       })
       .finally(() => {
         setLoading(false);

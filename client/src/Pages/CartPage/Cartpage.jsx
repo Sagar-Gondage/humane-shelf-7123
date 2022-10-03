@@ -29,7 +29,7 @@ const Cartpage = () => {
     }
     
   };
-  console.log(trigger);
+  
   return (
     <Box bg="#f8f8f8" p={{ lg: "2rem", md: "1rem" }} px={{ lg: "5rem" }}>
       {/* this box will have cards  */}

@@ -23,7 +23,7 @@ const userLoginError = (payload) => {
 const userLoginAPI = (payload) => (dispatch) => {
   dispatch(userLoginLoading(payload));
   axios
-    .post(`http://localhost:8080/user/login`, payload, {
+    .post(`https://onemgmasa.herokuapp.com/user/login`, payload, {
       headers: {
         Authorization: "Bearer " + payload.token,
       },
@@ -63,7 +63,7 @@ const userSignupAPI = (payload) => (dispatch) => {
   dispatch(userSignupLoading(payload));
   console.log(payload)
   axios
-    .post(`http://localhost:8080/user/signup`, payload, {
+    .post(`https://onemgmasa.herokuapp.com/user/signup`, payload, {
       headers: {
         Authorization: "Bearer " + payload.token,
       },
@@ -101,10 +101,10 @@ const userLogoutError = (payload) => {
 };
 
 const userLogoutAPI = (payload) => (dispatch) => {
-  console.log(payload);
+  
   dispatch(userLogoutLoading(payload));
   axios
-    .post(`http://localhost:8080/user/logout/${payload}`)
+    .post(`https://onemgmasa.herokuapp.com/user/logout/${payload}`)
     .then((r) => dispatch(userLogoutSuccess(r.data)))
     .catch((e) => dispatch(userLogoutError(e.data)));
 };
@@ -131,9 +131,9 @@ const userGetProfileError = (payload) => {
 
 const userGetProfileAPI = (payload) => (dispatch) => {
   dispatch(userGetProfileLoading(payload));
-  console.log(payload);
+ 
   axios
-    .get(`http://localhost:8080/user/profile/${payload.userId}`, {
+    .get(`https://onemgmasa.herokuapp.com/user/profile/${payload.userId}`, {
       headers: {
         Authorization: "Bearer " + payload.token,
       },

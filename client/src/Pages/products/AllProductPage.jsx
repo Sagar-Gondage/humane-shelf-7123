@@ -22,7 +22,7 @@ import AllProduct from "../../Components/allProductCart";
 const AllProductPage = () => {
   const { productList } = useSelector((state) => state);
   const { loading, products, filteredProducts } = productList;
-  console.log("productList", productList);
+  
   const [arr, setArr] = useState([]);
   const [filteredProductList, setFilteredProductList] = useState([]);
   const dispatch = useDispatch();
