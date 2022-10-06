@@ -211,7 +211,7 @@ const Stage1 = ({
               >
                 {message
                   ? message
-                  : "Something went wrong ! Please try again later."}
+                  : "something went wrong"}
               </Text>
             </Box>
           </Box>

@@ -109,6 +109,7 @@ const MobileSearchBox = () => {
     }
   };
   const fetchResult = (query) => {
+   
     axios
       .get(`https://onemgmasa.herokuapp.com/products/search?q=${query}`)
       .then((r) => {
