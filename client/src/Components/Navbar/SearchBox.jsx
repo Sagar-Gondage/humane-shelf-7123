@@ -84,7 +84,7 @@ const SearchBox = () => {
     const { name, value } = e.target;
     setQuery(value);
 
-    if (value.length >= 3) {
+    if (value.length >= 1) {
       onOpen();
       //   fetchResult(value);
     } else {
@@ -97,10 +97,10 @@ const SearchBox = () => {
     const { name, value } = e.target;
     setQuery(value);
 
-    if (value.length < 3) {
+    if (value.length < 1) {
       onClose();
       // setQuery("");
-    } else if (value.length >= 3) {
+    } else if (value.length >= 1) {
       if (id.current) {
         clearTimeout(id.current);
       }

@@ -86,7 +86,7 @@ const MobileSearchBox = () => {
     const { name, value } = e.target;
     setQuery(value);
 
-    if (value.length >= 3) {
+    if (value.length >= 1) {
       onOpen();
       //   fetchResult(value);
     } else {
@@ -99,7 +99,7 @@ const MobileSearchBox = () => {
     const { name, value } = e.target;
     setQuery(value);
 
-    if (value.length >= 3) {
+    if (value.length >= 1) {
       if (id.current) {
         clearTimeout(id.current);
       }
